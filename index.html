@@ -1,729 +1,507 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julania Finance – Instant Loans up to ₹1 Lakh</title>
+  <title>Julania Finance – Smart Loans for Every Financial Need</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="navbar">
   <a class="logo" href="#">
-    <div class="logo-text">Julania <span>Finance</span></div>
+    <div class="logo-icon">JF</div>
+    <span class="logo-text">Julania <strong>Finance</strong></span>
   </a>
   <ul id="navMenu">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#how">Process</a></li>
-    <li><a href="#loans">Personal Loan</a></li>
-    <li><a href="#eligibility">Eligibility</a></li>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#why">Why Us</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-cta" onclick="scrollTo('cta')">Apply Now</button>
+  <a href="#contact" class="btn-nav">Get Started</a>
   <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-content">
+  <div class="hero-left">
     <div class="hero-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-      RBI Registered NBFC — Trusted &amp; Secure
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      RBI Registered NBFC
     </div>
-    <h1>Get Up to<br/><span>₹1 Lakh Loan</span><br/>in 10 Minutes</h1>
-    <p class="hero-tagline">100% digital, paperless, and collateral-free. Apply from your phone and get funds directly in your bank account — no branch visit needed.</p>
-    <div class="hero-pills">
-      <div class="pill">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        10-Min Disbursal
-      </div>
-      <div class="pill">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Zero Collateral
-      </div>
-      <div class="pill">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        No Paperwork
-      </div>
-    </div>
+    <h1>Smart Loans for Every<br/><span>Financial Need — 100%</span><br/>Digital</h1>
+    <p class="hero-sub">Salary Advance, Personal Loan, Business Loan, Emergency Loan — all collateral-free, fully digital, with same-day disbursal via IMPS/NEFT. Powered by Julania Finance Pvt. Ltd.</p>
+    <ul class="hero-checks">
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 100% Digital KYC — Zero Paperwork</li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Same-Day Disbursal via IMPS/NEFT</li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Tenures from 7 Days to 36 Months</li>
+    </ul>
     <div class="hero-btns">
-      <a href="#cta" class="btn-gold">Apply Now — It's Free</a>
-      <a href="#how" class="btn-white-outline">See How it Works</a>
+      <a href="#contact" class="btn-gold">Apply Now</a>
+      <a href="#services" class="btn-outline-white">Explore Services</a>
     </div>
   </div>
 
-  <!-- ANIMATED HERO VISUAL — floating bills -->
-  <div class="hero-visual">
-    <div class="money-scene">
-      <!-- bill 1 — back -->
-      <div class="money-bill bill-1">
-        <div class="bill-rupee">₹</div>
-        <div class="bill-text">PERSONAL LOAN</div>
+  <div class="hero-right">
+    <div class="dashboard-card">
+      <div class="dc-header">
+        <div class="dc-logo">
+          <div class="dc-logo-icon">JF</div>
+          <div>
+            <div class="dc-brand">Julania Finance</div>
+            <div class="dc-sub">Portfolio Dashboard</div>
+          </div>
+        </div>
+        <span class="dc-live">LIVE</span>
       </div>
-      <!-- bill 2 — middle -->
-      <div class="money-bill bill-2">
-        <div class="bill-rupee">₹50,000</div>
-        <div class="bill-text">INSTANT APPROVAL</div>
+      <div class="dc-growth">+24.6% portfolio growth</div>
+      <div class="dc-chart">
+        <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5b942" stop-opacity="0.3"/><stop offset="100%" stop-color="#f5b942" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0,65 C30,60 50,50 80,40 C110,30 130,45 160,25 C190,10 220,20 260,5" stroke="#f5b942" stroke-width="2.5" fill="none"/>
+          <path d="M0,65 C30,60 50,50 80,40 C110,30 130,45 160,25 C190,10 220,20 260,5 L260,80 L0,80 Z" fill="url(#cg)"/>
+        </svg>
       </div>
-      <!-- bill 3 — front gold -->
-      <div class="money-bill bill-3">
-        <div class="bill-rupee">₹1,00,000</div>
-        <div class="bill-text">IN 10 MINUTES</div>
+      <div class="dc-stats">
+        <div class="dc-stat"><div class="dc-val">₹1L</div><div class="dc-lbl">Max Loan</div></div>
+        <div class="dc-stat"><div class="dc-val">24hr</div><div class="dc-lbl">Disbursal</div></div>
+        <div class="dc-stat"><div class="dc-val">8.5%</div><div class="dc-lbl">From p.a.</div></div>
       </div>
+    </div>
 
-      <!-- floating badges -->
-      <div class="orbit-badge" style="top:0;right:-20px;">
-        <div class="ob-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div>
-          <div class="ob-val">10 Min</div>
-          <div class="ob-lbl">Disbursal</div>
-        </div>
-      </div>
-
-      <div class="orbit-badge" style="bottom:20px;left:-20px;">
-        <div class="ob-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div>
-          <div class="ob-val">RBI</div>
-          <div class="ob-lbl">Registered</div>
-        </div>
-      </div>
-
-      <div class="orbit-badge" style="bottom:100px;right:-20px;">
-        <div class="ob-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
-        </div>
-        <div>
-          <div class="ob-val">50K+</div>
-          <div class="ob-lbl">Borrowers</div>
-        </div>
-      </div>
+    <div class="hero-float-1">
+      <div class="hf-num">₹500 Cr+</div>
+      <div class="hf-lbl">Loans Disbursed</div>
+    </div>
+    <div class="hero-float-2">
+      <div class="hf-num">50,000+</div>
+      <div class="hf-lbl">Happy Clients</div>
+    </div>
+    <div class="hero-float-3">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>RBI Registered NBFC</span>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div id="trust">
-  <div class="trust-item">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    RBI Registered NBFC
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="sb-item">
+    <div class="sb-num" data-target="50000" data-suffix="+" data-display="50,000+">50,000+</div>
+    <div class="sb-lbl">Happy Clients</div>
   </div>
-  <div class="trust-item">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    256-bit Encryption
+  <div class="sb-divider"></div>
+  <div class="sb-item">
+    <div class="sb-num" data-target="500" data-prefix="₹" data-suffix=" Cr+">₹500 Cr+</div>
+    <div class="sb-lbl">Loans Disbursed</div>
   </div>
-  <div class="trust-item">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    Funds in 10 Minutes
+  <div class="sb-divider"></div>
+  <div class="sb-item">
+    <div class="sb-num">4 Hrs</div>
+    <div class="sb-lbl">Avg. Disbursal Time</div>
   </div>
-  <div class="trust-item">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-    50,000+ Happy Borrowers
+  <div class="sb-divider"></div>
+  <div class="sb-item">
+    <div class="sb-num" data-target="98" data-suffix="%">98%</div>
+    <div class="sb-lbl">Customer Satisfaction</div>
   </div>
 </div>
 
-<!-- STATS -->
-<section id="stats">
-  <div class="text-center" style="margin-bottom:0">
-    <div class="sec-label">Numbers that Speak</div>
-    <div class="sec-title">Trusted by Thousands Across India</div>
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-head text-center">
+    <div class="sec-label">Our Products</div>
+    <h2 class="sec-title">Financial Products <span>Built For You</span></h2>
+    <p class="sec-sub">From short-term salary advances to business funding — transparent, digital, and fully RBI-compliant.</p>
   </div>
-  <div class="stats-grid" style="margin-top:52px">
-    <div class="stat-card">
-      <div class="stat-icon navy">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+  <div class="products-grid">
+    <div class="prod-card prod-blue">
+      <div class="prod-badge">Most Popular</div>
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
       </div>
-      <div class="stat-num" data-target="50" data-suffix="K+">0<span>K+</span></div>
-      <div class="stat-label">Happy Borrowers</div>
+      <h3>Salary Advance Loan</h3>
+      <p>Short-term salary advance for salaried employees — get up to 80% of your monthly salary credited to your account the same day via IMPS.</p>
+      <div class="prod-tags">
+        <span>₹5,000 – ₹1 Lakh</span>
+        <span>Same Day IMPS</span>
+        <span>7–40 Day Tenure</span>
+      </div>
+      <a href="#contact" class="btn-prod-white">Apply Now</a>
     </div>
-    <div class="stat-card">
-      <div class="stat-icon gold">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>
+
+    <div class="prod-card prod-gold">
+      <div class="prod-badge">Low Interest</div>
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </div>
-      <div class="stat-num" data-target="200" data-prefix="₹" data-suffix="Cr+">₹0<span>Cr+</span></div>
-      <div class="stat-label">Total Loans Disbursed</div>
+      <h3>Personal Loan</h3>
+      <p>Collateral-free personal loans for medical emergencies, travel, education, or any personal need — 100% digital KYC, no branch visit required.</p>
+      <div class="prod-tags">
+        <span>₹50,000 – ₹5 Lakh</span>
+        <span>100% Digital KYC</span>
+        <span>Rate from 10.5%</span>
+      </div>
+      <a href="#contact" class="btn-prod-dark">Apply Now</a>
     </div>
-    <div class="stat-card">
-      <div class="stat-icon navy">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+
+    <div class="prod-card prod-green">
+      <div class="prod-badge">MSME Friendly</div>
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       </div>
-      <div class="stat-num" data-target="10" data-suffix="Min">0<span>Min</span></div>
-      <div class="stat-label">Average Disbursal Time</div>
+      <h3>Business Loan</h3>
+      <p>Unsecured business loans for MSMEs and self-employed — working capital, machinery, or expansion funding with minimal documentation.</p>
+      <div class="prod-tags">
+        <span>₹1 Lakh – ₹10 Lakh</span>
+        <span>Collateral-Free</span>
+        <span>Quick Processing</span>
+      </div>
+      <a href="#contact" class="btn-prod-white">Apply Now</a>
     </div>
-    <div class="stat-card">
-      <div class="stat-icon gold">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+    <div class="prod-card prod-purple">
+      <div class="prod-badge">Instant Approval</div>
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
-      <div class="stat-num" data-target="4.8" data-suffix="★" data-decimal="1">0<span>★</span></div>
-      <div class="stat-label">Customer Rating</div>
+      <h3>Emergency Loan</h3>
+      <p>Medical emergencies or urgent cash needs? Get instant approval and same-day disbursal — because financial emergencies don't wait.</p>
+      <div class="prod-tags">
+        <span>₹10,000 – ₹2 Lakh</span>
+        <span>Instant Approval</span>
+        <span>Same-Day Disbursal</span>
+      </div>
+      <a href="#contact" class="btn-prod-white">Apply Now</a>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section id="features">
-  <div class="text-center">
-    <div class="sec-label">Why Julania Finance</div>
-    <div class="sec-title">Built for Speed, Trust &amp; Clarity</div>
-    <div class="sec-sub">We removed every friction point from the traditional lending process so you can get funds when you actually need them.</div>
+<!-- ABOUT -->
+<section id="about" class="about-section">
+  <div class="about-left">
+    <div class="about-trust-box">
+      <div class="atb-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        RBI Regulated NBFC
+      </div>
+      <div class="atb-stats">
+        <div class="atb-stat"><div class="atb-val">50K+</div><div class="atb-lbl">Happy Clients</div></div>
+        <div class="atb-stat"><div class="atb-val">₹500Cr+</div><div class="atb-lbl">Disbursed</div></div>
+        <div class="atb-stat"><div class="atb-val">60sec</div><div class="atb-lbl">Approval Time</div></div>
+      </div>
+      <div class="atb-logos">
+        <div class="atb-logo-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          RBI Registered
+        </div>
+        <div class="atb-logo-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          256-bit SSL
+        </div>
+        <div class="atb-logo-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          24/7 Support
+        </div>
+        <div class="atb-logo-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Same-Day
+        </div>
+      </div>
+      <a href="#contact" class="btn-gold" style="width:100%;text-align:center;margin-top:8px;">Speak to an Advisor</a>
+    </div>
   </div>
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      </div>
-      <h4>Instant Approval</h4>
-      <p>AI-powered credit assessment delivers a loan decision in under 60 seconds — day or night, no human approval queue.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </div>
-      <h4>Fully Paperless</h4>
-      <p>Upload your PAN and Aadhaar digitally from your phone. No physical documents, no branch visits, no waiting rooms.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <h4>Bank-Grade Security</h4>
-      <p>256-bit encryption with RBI-compliant data handling. Your personal and financial data is protected at every step.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>
-      </div>
-      <h4>Transparent Pricing</h4>
-      <p>See your exact EMI, total interest, and all charges before you accept. No hidden fees, no nasty surprises on your statement.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-      </div>
-      <h4>Direct Bank Transfer</h4>
-      <p>Approved funds are transferred directly to your registered bank account — no intermediaries, no additional steps.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-      </div>
-      <h4>Flexible Repayment</h4>
-      <p>Choose 1 to 12 month tenures with auto-debit setup and prepayment options — repay on your schedule.</p>
+  <div class="about-right">
+    <div class="sec-label">About Us</div>
+    <h2 class="sec-title">India's Most Trusted<br/><span>Digital Lending Partner</span></h2>
+    <p>Julania Finance is an RBI-registered Non-Banking Financial Company (NBFC) headquartered in Wazirpur, New Delhi. We provide collateral-free, 100% digital loans — Salary Advance, Personal, Business, and Emergency Loans — with same-day disbursal via IMPS/NEFT and complete transparency.</p>
+    <p style="margin-top:16px;">Our automated underwriting engine delivers real-time credit decisions in under 60 seconds. With minimal documentation (Aadhaar + PAN + salary slip), transparent APR, zero prepayment penalty, and strict adherence to RBI Fair Practices Code — we are India's most trusted digital NBFC for salaried professionals.</p>
+    <div class="about-pills">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> RBI Registered NBFC</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> 256-bit SSL Encryption</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 24/7 Dedicated Support</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Same-Day Disbursal</span>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="text-center">
-    <div class="sec-label">Simple Process</div>
-    <div class="sec-title">Loan in Your Account in 4 Steps</div>
-    <div class="sec-sub">From the moment you apply to funds in your account — the entire journey takes under 10 minutes.</div>
+<!-- PROCESS -->
+<section id="process" class="process-section">
+  <div class="sec-head text-center">
+    <div class="sec-label">How It Works</div>
+    <h2 class="sec-title">How We <span>Disburse Your Loan</span></h2>
+    <p class="sec-sub">Our end-to-end digital lending process ensures fast credit assessment and same-day disbursal — no queues, no paperwork.</p>
   </div>
-  <div class="steps-wrap">
-    <div class="steps-line"></div>
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <h4>Apply Online</h4>
-      <p>Fill in your basic details and loan amount on our website or app. Takes less than 3 minutes.</p>
+  <div class="process-steps">
+    <div class="proc-step" style="--delay:0s">
+      <div class="proc-num">01</div>
+      <div class="proc-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h4>Submit Loan Application</h4>
+      <p>Complete a quick digital application with basic employment and income details — takes under 2 minutes. No branch visit, no paperwork.</p>
     </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <h4>Upload Documents</h4>
-      <p>Submit PAN, Aadhaar, and last 3-month bank statement — all from your phone, digitally.</p>
+    <div class="proc-connector"></div>
+    <div class="proc-step" style="--delay:.2s">
+      <div class="proc-num">02</div>
+      <div class="proc-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <h4>Complete Digital KYC</h4>
+      <p>Upload your Aadhaar, PAN & salary slip for instant e-KYC verification. No physical documents needed — 100% online.</p>
     </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <h4>Instant Decision</h4>
-      <p>Our AI engine reviews your profile and provides a loan offer with exact EMI within minutes.</p>
+    <div class="proc-connector"></div>
+    <div class="proc-step" style="--delay:.4s">
+      <div class="proc-num">03</div>
+      <div class="proc-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h4>Credit Assessment</h4>
+      <p>Our automated underwriting system evaluates your creditworthiness and income eligibility instantly — real-time decision in 60 seconds.</p>
     </div>
-    <div class="step-card">
-      <div class="step-num">4</div>
-      <h4>Funds Credited</h4>
-      <p>Accept the offer and money is transferred to your bank account within 10 minutes. Done.</p>
-    </div>
-  </div>
-</section>
-
-<!-- LOANS -->
-<section id="loans">
-  <div class="text-center">
-    <div class="sec-label">Our Product</div>
-    <div class="sec-title">Personal Loan — Simple, Fast &amp; Fair</div>
-    <div class="sec-sub">Up to ₹1 Lakh disbursed in 10 minutes. Zero collateral, minimal documents, fully digital process.</div>
-  </div>
-
-  <!-- Single product — wide layout -->
-  <div style="margin-top:60px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
-    <div class="loan-card dark" style="border-radius:24px; padding:48px 40px;">
-      <div class="loan-badge-pill">ONLY PRODUCT</div>
-      <div class="loan-svg-wrap" style="width:68px;height:68px;border-radius:20px;margin-bottom:28px;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <div class="proc-connector"></div>
+    <div class="proc-step" style="--delay:.6s">
+      <div class="proc-num">04</div>
+      <div class="proc-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
       </div>
-      <h4 style="font-size:28px; margin-bottom:14px;">Personal Loan</h4>
-      <p style="font-size:15px; line-height:1.75; margin-bottom:32px;">For medical emergencies, home repairs, travel, education expenses, wedding costs, or any personal need — we fund it fast with zero paperwork hassle.</p>
-      <div class="loan-details" style="gap:14px;">
-        <div class="loan-detail-row" style="font-size:15px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>
-          Loan Amount: ₹5,000 – ₹1,00,000
-        </div>
-        <div class="loan-detail-row" style="font-size:15px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Tenure: 1 to 12 Months
-        </div>
-        <div class="loan-detail-row" style="font-size:15px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Disbursal in 10 Minutes
-        </div>
-        <div class="loan-detail-row" style="font-size:15px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          Interest from 12% per annum
-        </div>
-        <div class="loan-detail-row" style="font-size:15px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Zero Collateral Required
-        </div>
-      </div>
-    </div>
-
-    <!-- Use cases grid -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
-      <div style="background:var(--off); border-radius:18px; padding:28px 22px; border:1.5px solid var(--border);">
-        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--navy3),var(--navy));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        </div>
-        <h5 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;">Medical Emergency</h5>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;">Hospital bills, surgery costs, medicines — funded instantly when it matters most.</p>
-      </div>
-      <div style="background:var(--off); border-radius:18px; padding:28px 22px; border:1.5px solid var(--border);">
-        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--navy3),var(--navy));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <h5 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;">Home Repairs</h5>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;">Renovation, plumbing, electrical — get your home fixed without delay.</p>
-      </div>
-      <div style="background:var(--off); border-radius:18px; padding:28px 22px; border:1.5px solid var(--border);">
-        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--navy3),var(--navy));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <h5 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;">Education</h5>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;">Fees, course materials, or skill upgrades — invest in yourself today.</p>
-      </div>
-      <div style="background:var(--off); border-radius:18px; padding:28px 22px; border:1.5px solid var(--border);">
-        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--navy3),var(--navy));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h5 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;">Travel &amp; Events</h5>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;">Trips, weddings, or family celebrations — enjoy the moment, pay later.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ELIGIBILITY -->
-<section id="eligibility">
-  <div>
-    <div class="sec-label">Eligibility Criteria</div>
-    <div class="sec-title">Who Can Apply for a Loan?</div>
-    <div class="sec-sub">Simple and inclusive criteria. Most salaried and self-employed individuals qualify easily — check yours in seconds.</div>
-  </div>
-  <div class="elig-wrap">
-    <div class="elig-list">
-      <div class="elig-item">
-        <div class="elig-check">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <p>Indian citizen aged <strong>21 – 58 years</strong></p>
-      </div>
-      <div class="elig-item">
-        <div class="elig-check">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <p>Salaried professional with minimum <strong>₹15,000/month</strong> net income</p>
-      </div>
-      <div class="elig-item">
-        <div class="elig-check">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <p>Self-employed with <strong>1+ year</strong> of consistent business operations</p>
-      </div>
-      <div class="elig-item">
-        <div class="elig-check">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <p>Valid <strong>PAN card</strong> and <strong>Aadhaar card</strong> linked to mobile number</p>
-      </div>
-      <div class="elig-item">
-        <div class="elig-check">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <p>Active bank account with <strong>3-month salary credit</strong> history</p>
-      </div>
-      <div class="elig-item">
-        <div class="elig-check">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <p>CIBIL score of <strong>650 or above</strong> (lower scores considered case-by-case)</p>
-      </div>
-    </div>
-
-    <div class="elig-panel">
-      <div class="elig-amount">₹1L</div>
-      <div class="elig-amount-sub">Maximum Loan Amount — Zero Collateral</div>
-      <div class="elig-time">
-        <div class="elig-time-num">10</div>
-        <div class="elig-time-label">Minutes to Disbursal — Fastest in Industry</div>
-      </div>
-      <div class="elig-tags-wrap">
-        <span class="elig-tag">No Collateral</span>
-        <span class="elig-tag">No Guarantor</span>
-        <span class="elig-tag">100% Digital</span>
-        <span class="elig-tag">Instant KYC</span>
-        <span class="elig-tag">CIBIL Check Free</span>
-      </div>
+      <h4>Funds Disbursed</h4>
+      <p>Sanctioned loan amount transferred directly to your registered bank account via IMPS/NEFT — same day, zero delay.</p>
     </div>
   </div>
 </section>
 
 <!-- WHY US -->
-<section id="why">
-  <div class="text-center">
+<section id="why" class="why-section">
+  <div class="sec-head text-center">
     <div class="sec-label">Our Promise</div>
-    <div class="sec-title">Why Thousands Choose Julania Finance</div>
-    <div class="sec-sub">More than speed — we are committed to fairness, safety, and putting borrowers first.</div>
+    <h2 class="sec-title">Responsible Lending for <span>Salaried Professionals</span></h2>
+    <p class="sec-sub">Built on trust, transparency, and technology — Julania Finance is designed around your financial wellbeing.</p>
   </div>
   <div class="why-grid">
     <div class="why-card">
-      <div class="why-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="why-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
-      <div>
-        <h4>RBI Registered NBFC</h4>
-        <p>Julania Finance is a fully licensed Non-Banking Financial Company registered with the Reserve Bank of India. Every rupee lent follows strict regulatory guidelines.</p>
-      </div>
+      <h4>Instant Credit Decision</h4>
+      <p>Our automated underwriting engine delivers real-time credit decisions based on your income and repayment capacity — result in under 60 seconds.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div class="why-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       </div>
-      <div>
-        <h4>10-Minute Disbursal</h4>
-        <p>From approval to bank credit in 10 minutes flat. We've built our technology stack specifically to eliminate delays at every stage of the loan journey.</p>
-      </div>
+      <h4>Data Privacy & Security</h4>
+      <p>256-bit SSL encryption with strict data privacy compliance. Your financial information is never shared with third parties under any circumstances.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <div class="why-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       </div>
-      <div>
-        <h4>Minimal Documentation</h4>
-        <p>Just PAN, Aadhaar, and bank statement. No salary slips, no ITR, no NOC letters — we respect your time.</p>
-      </div>
+      <h4>Minimal Documentation</h4>
+      <p>Only Aadhaar, PAN & latest salary slip required. Our digital KYC pipeline verifies your identity in real time — no physical paperwork, no branch visits.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div class="why-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>
       </div>
-      <div>
-        <h4>Dedicated Support</h4>
-        <p>Our customer care team is available Monday to Saturday, ready to guide you through every step — application, approval, repayment, and beyond.</p>
+      <h4>Transparent Fee Structure</h4>
+      <p>Full cost disclosure upfront — processing fee, APR, and total repayment shown before you sign. Zero hidden charges, zero prepayment penalty.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       </div>
+      <h4>Income-Based Credit Limit</h4>
+      <p>Loan eligibility calculated on your net take-home salary. Choose repayment tenure of 7 to 40 days — structured around your salary cycle.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h4>Borrower Support & Grievance</h4>
+      <p>Dedicated borrower support in Hindi & English. Adherence to RBI Fair Practices Code. Call +91-9355753533 for assistance or grievance resolution.</p>
     </div>
   </div>
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews" style="background:var(--navy3);padding:90px 6%;overflow:hidden;">
-  <div class="text-center">
-    <div class="sec-label" style="color:var(--gold2);">Testimonials</div>
-    <div class="sec-title" style="color:var(--white);">What Our Customers Say</div>
-    <div class="sec-sub" style="color:rgba(255,255,255,.6);margin:0 auto;">Real stories from real people whose financial needs we fulfilled — fast, fair, and hassle-free.</div>
+<section id="reviews" class="reviews-section">
+  <div class="sec-head text-center">
+    <div class="sec-label">Testimonials</div>
+    <h2 class="sec-title">What Our <span>Customers Say</span></h2>
+    <p class="sec-sub">Join 50,000+ satisfied customers who trust Julania Finance for their financial needs across India.</p>
   </div>
-
-  <!-- carousel arrows outside, clip div inside -->
-  <div style="margin-top:52px;position:relative;display:flex;align-items:center;gap:16px;">
-    <button class="rev-arrow" onclick="window.revMove(-1)" aria-label="Previous" style="position:static;transform:none;flex-shrink:0;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  <div class="reviews-carousel-wrap">
+    <button class="rev-btn rev-btn-prev" onclick="revSlide(-1)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-
-  <div class="rev-outer" style="flex:1;overflow:hidden;position:relative;padding:4px 0;">
-    <div class="rev-track" id="revTrack">
-
-      <!-- card 1 -->
-      <div class="rev-card">
-        <div class="rev-top">
-          <div class="rev-avatar" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">R</div>
-          <div class="rev-info">
-            <div class="rev-name">Rahul Sharma</div>
-            <div class="rev-role">Software Engineer, Mumbai</div>
+    <div class="reviews-clip">
+      <div class="reviews-track" id="revTrack">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-text">"Applied at 11 AM, money was in my account by 2 PM the same day. Absolutely seamless experience. No branch visits, no drama — purely digital."</p>
+          <div class="rev-author">
+            <div class="rev-avatar" style="background:#1a3c6e;">RK</div>
+            <div>
+              <div class="rev-name">Rahul Kumar</div>
+              <div class="rev-role">Salaried Professional, Delhi</div>
+            </div>
           </div>
-          <div class="rev-amount">₹80,000</div>
         </div>
-        <div class="rev-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-text">"I needed ₹80,000 for a medical emergency. Julania Finance approved it in 10 minutes. Very helpful, transparent, and no hidden charges at all."</p>
+          <div class="rev-author">
+            <div class="rev-avatar" style="background:#e8a020;">PS</div>
+            <div>
+              <div class="rev-name">Priya Sharma</div>
+              <div class="rev-role">IT Employee, Noida</div>
+            </div>
+          </div>
         </div>
-        <p class="rev-text">"Applied at 11 PM for a medical emergency. Approved within minutes, money in my account before midnight. Julania Finance is a lifesaver — no exaggeration."</p>
-        <div class="rev-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
-          Verified Borrower
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-text">"Tried 3 other apps — all rejected me. Julania Finance understood my situation and approved ₹1 lakh instantly. Best NBFC for salaried people."</p>
+          <div class="rev-author">
+            <div class="rev-avatar" style="background:#22c55e;">AM</div>
+            <div>
+              <div class="rev-name">Amit Mehta</div>
+              <div class="rev-role">Manager, Gurgaon</div>
+            </div>
+          </div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-text">"Excellent service! Got my salary advance within hours. The process was completely digital and super easy. Would highly recommend to everyone."</p>
+          <div class="rev-author">
+            <div class="rev-avatar" style="background:#6366f1;">SK</div>
+            <div>
+              <div class="rev-name">Sunita Kapoor</div>
+              <div class="rev-role">Teacher, Pune</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- card 2 -->
-      <div class="rev-card">
-        <div class="rev-top">
-          <div class="rev-avatar" style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">P</div>
-          <div class="rev-info">
-            <div class="rev-name">Priya Mehta</div>
-            <div class="rev-role">Teacher, Pune</div>
-          </div>
-          <div class="rev-amount">₹50,000</div>
-        </div>
-        <div class="rev-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="rev-text">"No paperwork, no branch visit. I uploaded my documents on my phone during lunch break and had the loan amount by evening. The whole process was incredibly smooth."</p>
-        <div class="rev-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
-          Verified Borrower
-        </div>
-      </div>
-
-      <!-- card 3 -->
-      <div class="rev-card">
-        <div class="rev-top">
-          <div class="rev-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706);">A</div>
-          <div class="rev-info">
-            <div class="rev-name">Arjun Nair</div>
-            <div class="rev-role">Sales Manager, Chennai</div>
-          </div>
-          <div class="rev-amount">₹1,00,000</div>
-        </div>
-        <div class="rev-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="rev-text">"Got the full ₹1 lakh for my home renovation. Interest rate was transparent from day one, no hidden charges. Will definitely use Julania Finance again."</p>
-        <div class="rev-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
-          Verified Borrower
-        </div>
-      </div>
-
-      <!-- card 4 -->
-      <div class="rev-card">
-        <div class="rev-top">
-          <div class="rev-avatar" style="background:linear-gradient(135deg,#10b981,#059669);">S</div>
-          <div class="rev-info">
-            <div class="rev-name">Sunita Desai</div>
-            <div class="rev-role">Nurse, Hyderabad</div>
-          </div>
-          <div class="rev-amount">₹30,000</div>
-        </div>
-        <div class="rev-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#dce4f0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="rev-text">"My daughter's school fees were due and I was short. Julania Finance processed my loan in under 10 minutes. The support team was also very helpful and patient."</p>
-        <div class="rev-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
-          Verified Borrower
-        </div>
-      </div>
-
-      <!-- card 5 -->
-      <div class="rev-card">
-        <div class="rev-top">
-          <div class="rev-avatar" style="background:linear-gradient(135deg,#ef4444,#dc2626);">K</div>
-          <div class="rev-info">
-            <div class="rev-name">Karan Malhotra</div>
-            <div class="rev-role">Accountant, Delhi</div>
-          </div>
-          <div class="rev-amount">₹70,000</div>
-        </div>
-        <div class="rev-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="rev-text">"I was skeptical at first about an online loan. But Julania Finance is 100% legit — RBI registered, transparent pricing, and money came faster than I expected. Highly recommend."</p>
-        <div class="rev-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
-          Verified Borrower
-        </div>
-      </div>
-
-    </div><!-- /rev-track -->
-  </div><!-- /rev-outer -->
-
-    <button class="rev-arrow" onclick="window.revMove(1)" aria-label="Next" style="position:static;transform:none;flex-shrink:0;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <button class="rev-btn rev-btn-next" onclick="revSlide(1)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
-  </div><!-- /flex wrapper -->
-
-  <!-- dots -->
+  </div>
   <div class="rev-dots" id="revDots"></div>
 </section>
 
 <!-- FAQ -->
-<section id="faq">
-  <div class="text-center">
+<section id="faq" class="faq-section">
+  <div class="sec-head text-center">
     <div class="sec-label">FAQ</div>
-    <div class="sec-title">Got Questions? We Have Answers.</div>
+    <h2 class="sec-title">Frequently Asked <span>Questions</span></h2>
+    <p class="sec-sub">Got questions? We have answers. If you don't find what you're looking for, contact our support team.</p>
   </div>
-  <div class="faq-cols">
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          How quickly will I receive the loan amount?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-a">Once approved and documents are verified, funds are credited to your bank account within 10 minutes on business days. We guarantee this processing time.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          What is the maximum loan I can get?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-a">You can borrow up to ₹1,00,000 (One Lakh Rupees). The minimum loan amount is ₹5,000. Your actual eligibility depends on your income, credit score, and repayment history.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Is any collateral or guarantor required?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-a">No. All Julania Finance loans are completely collateral-free and require no guarantor. Your creditworthiness and income are sufficient.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          What is the interest rate charged?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-a">Interest rates start from 12% per annum and vary based on your credit score, loan amount, and tenure. You will see the exact rate before accepting — no hidden surprises.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Can I repay my loan before the due date?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-a">Yes. You can prepay or foreclose your loan at any time. Minimal prepayment charges apply after the lock-in period and are clearly disclosed at the time of application.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Is Julania Finance legitimate and regulated?
-          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-a">Absolutely. Julania Finance is a Reserve Bank of India (RBI) registered Non-Banking Financial Company (NBFC). We comply with all RBI guidelines on lending, data privacy, and customer protection.</div>
-      </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the minimum salary required to apply?<span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-a">A minimum net monthly salary of ₹15,000 is required to be eligible for a Julania Finance loan. Self-employed applicants need to show consistent income for at least 12 months.</div>
     </div>
-
-    <div class="faq-panel">
-      <h3>Still have <span>questions?</span></h3>
-      <p>Our loan experts are available Monday to Saturday, 9am – 7pm. Reach us on phone, email, or WhatsApp — we're here to help you make the right decision.</p>
-      <div class="faq-contact">
-        <div class="faq-contact-item">
-          <div class="faq-contact-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div>
-            <p>Phone / WhatsApp</p>
-            <strong>+91 80000 00000</strong>
-          </div>
-        </div>
-        <div class="faq-contact-item">
-          <div class="faq-contact-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <p>Email Support</p>
-            <strong>support@julania.finance</strong>
-          </div>
-        </div>
-      </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How quickly is the loan approved and disbursed?<span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-a">Loan approval takes under 60 seconds via our automated underwriting engine. Funds are disbursed to your bank account within the same working day via IMPS/NEFT.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What documents are required for digital KYC?<span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-a">You only need your Aadhaar card, PAN card, and latest salary slip. All verification is done digitally — no physical documents need to be submitted or couriered.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Are there any prepayment charges or hidden fees?<span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-a">Zero prepayment penalty. All fees — processing fee, APR, and total repayment amount — are disclosed upfront before you sign the loan agreement. No hidden charges whatsoever.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the applicable interest rate and APR?<span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-a">Interest rates start from 8.5% per annum for salary advances and 10.5% for personal loans. The exact APR varies based on your credit profile, loan amount, and tenure — shown clearly before acceptance.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is my personal and financial data secure?<span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-a">Yes. We use 256-bit SSL encryption and strict data privacy protocols. Your data is never sold or shared with any third party. We are fully compliant with RBI data protection guidelines.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What loan tenures are available?<span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-a">Salary advance loans: 7 to 40 days. Personal loans: 3 to 36 months. Business loans: 6 to 36 months. Emergency loans: 7 days to 12 months. All tenures are flexible and structured around your cash flow.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I raise a grievance or complaint?<span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-a">Call us at +91-9355753533 or email info@julaniafinance.com. We follow the RBI Fair Practices Code and resolve all grievances within 7 working days. A formal grievance portal is available on request.</div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section id="cta" style="padding:0;background:var(--off);">
-  <div style="
-    background: linear-gradient(135deg, var(--navy3) 0%, var(--navy) 60%, #1a4080 100%);
-    margin: 0 4%; border-radius: 28px;
-    padding: 70px 6%;
-    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
-    position: relative; overflow: hidden;
-  ">
-    <!-- BG decorations -->
-    <div style="position:absolute;top:-80px;right:220px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(232,160,32,.12) 0%,transparent 70%);pointer-events:none;"></div>
-    <div style="position:absolute;bottom:-60px;left:40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none;"></div>
-    <!-- dashed ring accent -->
-    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);width:320px;height:320px;border-radius:50%;border:1.5px dashed rgba(232,160,32,.15);pointer-events:none;"></div>
-    <div style="position:absolute;right:100px;top:50%;transform:translateY(-50%);width:220px;height:220px;border-radius:50%;border:1.5px solid rgba(232,160,32,.08);pointer-events:none;"></div>
-
-    <!-- LEFT: text -->
-    <div style="position:relative;z-index:1;">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,160,32,.15);border:1px solid rgba(232,160,32,.3);color:var(--gold2);padding:6px 16px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.6px;margin-bottom:20px;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        RBI REGISTERED NBFC
-      </div>
-      <h2 style="font-size:clamp(26px,3.2vw,44px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:16px;letter-spacing:-.5px;">
-        Get Up to <span style="color:var(--gold2);">₹1 Lakh</span><br/>in Just 10 Minutes
-      </h2>
-      <p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;max-width:480px;margin-bottom:0;">
-        No paperwork. No branch visit. 100% digital personal loan — apply now and get funds directly in your bank account.
-      </p>
-    </div>
-
-    <!-- RIGHT: action box -->
-    <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:240px;">
-      <a href="#" class="btn-gold" style="width:100%;text-align:center;font-size:16px;padding:16px 28px;">
-        Apply Now — Free
-      </a>
-      <a href="tel:+918000000000" style="width:100%;text-align:center;display:inline-block;border:2px solid rgba(255,255,255,.25);color:var(--white);padding:14px 28px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#f5b942'" onmouseout="this.style.borderColor='rgba(255,255,255,.25)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Call Our Experts
-      </a>
-      <!-- mini trust pills -->
-      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px;">
-        <span style="font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px;">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Zero Collateral
-        </span>
-        <span style="font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px;">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          No Credit Impact
-        </span>
-        <span style="font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px;">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          100% Digital
-        </span>
-      </div>
-    </div>
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="sec-head text-center">
+    <div class="sec-label">Get In Touch</div>
+    <h2 class="sec-title">Start Your Financial <span>Journey Today</span></h2>
+    <p class="sec-sub">Fill out the form below and our expert will call you within 10 minutes.</p>
   </div>
-  <div style="padding:16px 4% 60px;text-align:center;">
-    <p style="font-size:12px;color:var(--muted);">By applying you agree to our Terms &amp; Conditions. Julania Finance is an RBI-registered NBFC. Loans subject to eligibility.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <p>We are available Monday to Saturday, 9AM to 7PM. Our team will respond within 10 minutes.</p>
+      <div class="ci-items">
+        <div class="ci-item">
+          <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="ci-label">Phone</div><div class="ci-val">+91-9355753533</div></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="ci-label">Email</div><div class="ci-val">info@julaniafinance.com</div></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="ci-label">Office</div><div class="ci-val">Wazirpur, New Delhi — 110052</div></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><div class="ci-label">Working Hours</div><div class="ci-val">Mon–Sat: 9:00 AM – 7:00 PM</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Rahul Sharma" required />
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="+91 98765 43210" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="rahul@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Service Required *</label>
+          <select required>
+            <option value="">Select a service</option>
+            <option>Salary Advance Loan</option>
+            <option>Personal Loan</option>
+            <option>Business Loan</option>
+            <option>Emergency Loan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Tell us about your financial requirements..."></textarea>
+        </div>
+        <button type="submit" class="btn-gold" style="width:100%;font-size:16px;padding:16px;">Submit Application</button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -732,47 +510,58 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a class="logo" href="#">
-        <div class="logo-text">Julania <span>Finance</span></div>
+        <div class="logo-icon">JF</div>
+        <span class="logo-text" style="color:#fff;">Julania <strong style="color:#f5b942;">Finance</strong></span>
       </a>
-      <p>A trusted RBI-registered NBFC providing fast, paperless, and transparent loans up to ₹1 Lakh with 10-minute disbursal to individuals across India.</p>
+      <p>RBI-Registered NBFC | Wazirpur, Delhi. Collateral-free loans, 100% digital KYC, transparent APR, same-day IMPS disbursal. Adherent to RBI Fair Practices Code.</p>
+      <div class="footer-badges">
+        <span class="f-badge">RBI Registered</span>
+        <span class="f-badge">Secure Payments</span>
+      </div>
     </div>
     <div>
-      <h5>Products</h5>
+      <h5>Our Services</h5>
       <ul>
-        <li><a href="#loans">Personal Loan</a></li>
-        <li><a href="#loans">Salary Advance</a></li>
-        <li><a href="#loans">Business Loan</a></li>
+        <li><a href="#services">Salary Advance Loan</a></li>
+        <li><a href="#services">Personal Loan</a></li>
+        <li><a href="#services">Business Loan</a></li>
+        <li><a href="#services">Emergency Loan</a></li>
+        <li><a href="#services">Insurance Planning</a></li>
       </ul>
     </div>
     <div>
-      <h5>Company</h5>
+      <h5>Quick Links</h5>
       <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact Us</a></li>
       </ul>
     </div>
     <div>
-      <h5>Legal</h5>
+      <h5>Contact Us</h5>
+      <ul>
+        <li><a href="tel:+919355753533">+91-9355753533</a></li>
+        <li><a href="mailto:info@julaniafinance.com">info@julaniafinance.com</a></li>
+        <li><a href="#">Wazirpur, New Delhi — 110052, India</a></li>
+      </ul>
+      <h5 style="margin-top:24px;">Legal</h5>
       <ul>
         <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Use</a></li>
-        <li><a href="#">Fair Practice Code</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Loan Agreement</a></li>
         <li><a href="#">Grievance Policy</a></li>
-        <li><a href="#">RBI Guidelines</a></li>
+        <li><a href="#">Fair Practice Code</a></li>
       </ul>
     </div>
   </div>
-  <hr class="footer-divider" />
   <div class="footer-bottom">
-    <span>© 2026 Julania Finance Pvt. Ltd. All rights reserved.</span>
-    <span class="rbi-pill">RBI Registered NBFC</span>
-    <span>CIN: U65929XX2020PTC000000</span>
+    <p>© 2025 Julania Finance Pvt. Ltd. | Wazirpur Industrial Area, New Delhi — 110052 | RBI-Registered NBFC | All Rights Reserved.</p>
+    <p class="footer-disclaimer">All loans subject to credit assessment and eligibility criteria. Interest rates, APR, and tenure may vary based on applicant profile. Transparent pricing — no hidden charges.</p>
   </div>
 </footer>
 
 <script src="script.js"></script>
 </body>
 </html>
-

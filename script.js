@@ -1,14 +1,3 @@
-// FAQ accordion
-function toggleFaq(btn) {
-  const ans    = btn.nextElementSibling;
-  const isOpen = btn.classList.contains('open');
-  document.querySelectorAll('.faq-q').forEach(b => {
-    b.classList.remove('open');
-    b.nextElementSibling.classList.remove('show');
-  });
-  if (!isOpen) { btn.classList.add('open'); ans.classList.add('show'); }
-}
-
 // Mobile nav
 let navOpen = false;
 function toggleNav() {
@@ -17,126 +6,133 @@ function toggleNav() {
   if (navOpen) {
     Object.assign(ul.style, {
       display:'flex', flexDirection:'column', position:'absolute',
-      top:'72px', left:'0', right:'0', background:'#0a1a3d',
-      padding:'20px 6%', boxShadow:'0 8px 24px rgba(0,0,0,.3)',
-      zIndex:'998', gap:'20px'
+      top:'68px', left:'0', right:'0', background:'#0a1a3d',
+      padding:'20px 5%', boxShadow:'0 8px 24px rgba(0,0,0,.3)',
+      zIndex:'998', gap:'18px'
     });
-  } else {
-    ul.style.display = 'none';
-  }
+  } else { ul.style.display = 'none'; }
 }
 
-// Scroll helper
-function scrollTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+// FAQ accordion
+function toggleFaq(btn) {
+  const ans = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(b => {
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('show');
+  });
+  if (!isOpen) { btn.classList.add('open'); ans.classList.add('show'); }
+}
+
+// Form submit
+function submitForm(e) {
+  e.preventDefault();
+  alert('Thank you! Our expert will call you within 10 minutes.');
+  e.target.reset();
 }
 
 // ── REVIEWS CAROUSEL ──
 (function() {
   const track    = document.getElementById('revTrack');
   const dotsWrap = document.getElementById('revDots');
-  const cards    = Array.from(track.querySelectorAll('.rev-card'));
-  const GAP      = 24;
-  const VISIBLE  = () => window.innerWidth < 700 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-  let cur = 0, autoTimer;
+  if (!track) return;
+  const cards  = Array.from(track.querySelectorAll('.rev-card'));
+  const GAP    = 24;
+  const VIS    = () => window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  let cur = 0, timer;
 
-  function cardW() { return cards[0].getBoundingClientRect().width + GAP; }
-  function maxIdx() { return Math.max(0, cards.length - VISIBLE()); }
+  function cw() { return cards[0].getBoundingClientRect().width + GAP; }
+  function max() { return Math.max(0, cards.length - VIS()); }
 
   function buildDots() {
     dotsWrap.innerHTML = '';
-    for (let i = 0; i <= maxIdx(); i++) {
+    for (let i = 0; i <= max(); i++) {
       const d = document.createElement('button');
       d.className = 'rev-dot' + (i === cur ? ' active' : '');
-      d.onclick = () => { goTo(i); resetAuto(); };
+      d.onclick = () => { goTo(i); reset(); };
       dotsWrap.appendChild(d);
     }
   }
+  function goTo(i) {
+    cur = Math.max(0, Math.min(i, max()));
+    track.style.transform = `translateX(-${cur * cw()}px)`;
+    dotsWrap.querySelectorAll('.rev-dot').forEach((d,j) => d.classList.toggle('active', j === cur));
+  }
+  function revSlide(dir) { goTo(cur + dir); reset(); }
+  window.revSlide = revSlide;
 
-  function goTo(idx) {
-    cur = Math.max(0, Math.min(idx, maxIdx()));
-    track.style.transform = `translateX(-${cur * cardW()}px)`;
-    dotsWrap.querySelectorAll('.rev-dot').forEach((d,i) => d.classList.toggle('active', i === cur));
+  function reset() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(cur >= max() ? 0 : cur + 1), 4500);
   }
 
-  function revMove(dir) { goTo(cur + dir); resetAuto(); }
-  window.revMove = revMove;
-
-  function resetAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(() => goTo(cur >= maxIdx() ? 0 : cur + 1), 4000);
-  }
-
-  setTimeout(() => { buildDots(); resetAuto(); }, 100);
+  setTimeout(() => { buildDots(); reset(); }, 100);
   window.addEventListener('resize', () => { buildDots(); goTo(cur); });
 
-  // drag/swipe
-  let dragX = 0, dragging = false;
-  track.addEventListener('mousedown',  e => { dragging=true; dragX=e.clientX; track.style.transition='none'; });
-  track.addEventListener('mousemove',  e => { if(!dragging) return; if(Math.abs(e.clientX-dragX)>50){ dragging=false; track.style.transition=''; revMove(dragX-e.clientX>0?1:-1); } });
-  track.addEventListener('mouseup',    () => { dragging=false; track.style.transition=''; });
-  track.addEventListener('touchstart', e => { dragX=e.touches[0].clientX; }, {passive:true});
-  track.addEventListener('touchend',   e => { const diff=dragX-e.changedTouches[0].clientX; if(Math.abs(diff)>40) revMove(diff>0?1:-1); });
+  // swipe
+  let sx = 0;
+  track.addEventListener('touchstart', e => sx = e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e => {
+    const diff = sx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) revSlide(diff > 0 ? 1 : -1);
+  });
 })();
 
-// ── SCROLL REVEAL: Steps (one by one) ──
+// ── PROCESS STEPS: scroll reveal one by one ──
 (function() {
-  const steps = document.querySelectorAll('.step-card');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        steps.forEach((s, i) => {
-          setTimeout(() => s.classList.add('visible'), i * 200);
-        });
-        obs.disconnect();
-      }
-    });
-  }, { threshold: 0.2 });
+  const steps = document.querySelectorAll('.proc-step');
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      steps.forEach(s => s.classList.add('visible'));
+      obs.disconnect();
+    }
+  }, { threshold: 0.15 });
   if (steps.length) obs.observe(steps[0].closest('section') || steps[0]);
 })();
 
-// ── SCROLL REVEAL: Stat cards + counter ──
+// ── STATS BAR: counter animation ──
 (function() {
-  const cards = document.querySelectorAll('.stat-card');
+  const items = document.querySelectorAll('.sb-num[data-target]');
   let done = false;
-  const obs = new IntersectionObserver((entries) => {
+  const obs = new IntersectionObserver(entries => {
     if (!entries[0].isIntersecting || done) return;
     done = true;
-    cards.forEach((card, i) => {
-      setTimeout(() => {
-        card.classList.add('visible');
-        const el = card.querySelector('[data-target]');
-        if (!el) return;
-        const target  = parseFloat(el.dataset.target);
-        const suffix  = el.dataset.suffix || '';
-        const prefix  = el.dataset.prefix || '';
-        const decimal = parseInt(el.dataset.decimal || '0');
-        const dur = 1600, fps = 60, steps2 = dur / (1000 / fps);
-        let cur = 0, step2 = target / steps2;
-        const span = el.querySelector('span');
-        const tick = () => {
-          cur = Math.min(cur + step2, target);
-          const val = decimal ? cur.toFixed(decimal) : Math.round(cur);
-          el.childNodes[0].nodeValue = prefix + val;
-          if (span) span.textContent = suffix;
-          if (cur < target) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      }, i * 150);
+    items.forEach(el => {
+      const target  = parseFloat(el.dataset.target);
+      const suffix  = el.dataset.suffix || '';
+      const prefix  = el.dataset.prefix || '';
+      const display = el.dataset.display;
+      if (display) { setTimeout(() => el.textContent = display, 800); return; }
+      const dec = target % 1 !== 0 ? 1 : 0;
+      const dur = 1800, steps = dur / 16;
+      let c = 0, step = target / steps;
+      const tick = () => {
+        c = Math.min(c + step, target);
+        el.textContent = prefix + (dec ? c.toFixed(dec) : Math.round(c)) + suffix;
+        if (c < target) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
     });
     obs.disconnect();
-  }, { threshold: 0.3 });
-  if (cards.length) obs.observe(cards[0].closest('section') || cards[0]);
+  }, { threshold: 0.4 });
+  const bar = document.querySelector('.stats-bar');
+  if (bar) obs.observe(bar);
 })();
 
-// ── Active nav link on scroll ──
+// ── ACTIVE NAV on scroll ──
 window.addEventListener('scroll', () => {
   const pos = window.scrollY + 80;
-  document.querySelectorAll('section[id]').forEach(s => {
+  document.querySelectorAll('section[id], div[id]').forEach(s => {
     if (pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight) {
       document.querySelectorAll('nav ul a').forEach(a => a.style.color = '');
       const lnk = document.querySelector(`nav ul a[href="#${s.id}"]`);
       if (lnk) lnk.style.color = '#f5b942';
     }
   });
+});
+
+// ── NAV scroll shadow ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow =
+    window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,.4)' : '0 2px 20px rgba(0,0,0,.3)';
 });
