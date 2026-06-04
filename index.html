@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julania Finance – Instant Loans up to ₹1 Lakh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0f2554;
+      --navy2:  #1a3c6e;
+      --navy3:  #0a1a3d;
+      --gold:   #e8a020;
+      --gold2:  #f5b942;
+      --gold3:  #c8880a;
+      --white:  #ffffff;
+      --off:    #f5f7fc;
+      --muted:  #6b7a90;
+      --border: #dce4f0;
+      --text:   #1e2a3a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: var(--navy3);
+      padding: 0 6%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      box-shadow: 0 2px 20px rgba(0,0,0,.3);
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-text { font-size: 21px; font-weight: 800; color: var(--white); letter-spacing: -.3px; }
+    .logo-text span { color: var(--gold2); }
+    nav ul { list-style: none; display: flex; gap: 36px; }
+    nav ul a { text-decoration: none; color: rgba(255,255,255,.7); font-size: 14px; font-weight: 500; transition: color .2s; }
+    nav ul a:hover { color: var(--gold2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold3));
+      color: var(--white); border: none; padding: 11px 28px; border-radius: 8px;
+      font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .2s, transform .15s;
+    }
+    .nav-cta:hover { opacity: .9; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* ── HERO ── */
+    #hero {
+      margin-top: 72px;
+      background: linear-gradient(135deg, var(--navy3) 0%, var(--navy) 55%, var(--navy2) 100%);
+      min-height: 92vh;
+      padding: 80px 6% 60px;
+      display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    /* background pattern */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 20% 50%, rgba(232,160,32,.08) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,160,32,.15); border: 1px solid rgba(232,160,32,.35);
+      color: var(--gold2); padding: 7px 18px; border-radius: 100px;
+      font-size: 12px; font-weight: 700; letter-spacing: .6px; margin-bottom: 24px;
+    }
+    #hero h1 {
+      font-size: clamp(32px,4.5vw,56px); font-weight: 900; line-height: 1.1;
+      color: var(--white); margin-bottom: 22px; letter-spacing: -.5px;
+    }
+    #hero h1 span { color: var(--gold2); }
+    .hero-tagline {
+      font-size: 17px; color: rgba(255,255,255,.72); line-height: 1.75;
+      margin-bottom: 40px; max-width: 500px;
+    }
+    .hero-pills { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+    .pill {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      color: var(--white); padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 500;
+    }
+    .pill svg { color: var(--gold2); }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold3));
+      color: var(--white); padding: 15px 36px; border-radius: 10px;
+      font-weight: 800; font-size: 15px; text-decoration: none;
+      display: inline-block; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 24px rgba(232,160,32,.35);
+    }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(232,160,32,.45); }
+    .btn-white-outline {
+      border: 2px solid rgba(255,255,255,.3); color: var(--white);
+      padding: 15px 32px; border-radius: 10px; font-weight: 600; font-size: 15px;
+      text-decoration: none; display: inline-block; transition: border-color .2s;
+    }
+    .btn-white-outline:hover { border-color: var(--gold2); }
+
+    /* ── HERO VISUAL ── */
+    .hero-visual {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      z-index: 1; width: 100%; max-width: 360px; margin: 0 auto;
+    }
+    /* big animated coin ring */
+    .coin-ring {
+      width: 300px; height: 300px; border-radius: 50%;
+      border: 2px solid rgba(232,160,32,.2);
+      position: relative; display: flex; align-items: center; justify-content: center;
+      animation: spinRing 18s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spinRing { to { transform: rotate(360deg); } }
+    .coin-ring-inner {
+      width: 220px; height: 220px; border-radius: 50%;
+      border: 2px dashed rgba(232,160,32,.15);
+      position: absolute;
+      animation: spinRing 10s linear infinite reverse;
+    }
+    /* center pulse circle */
+    .coin-center {
+      width: 130px; height: 130px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold3), var(--gold), var(--gold2));
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      animation: pulse 2.5s ease-in-out infinite;
+      position: relative; z-index: 2;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 16px rgba(232,160,32,.12), 0 0 0 32px rgba(232,160,32,.06); }
+      50%      { box-shadow: 0 0 0 22px rgba(232,160,32,.18), 0 0 0 44px rgba(232,160,32,.08); }
+    }
+    .coin-center .coin-rupee { font-size: 42px; font-weight: 900; color: var(--white); line-height: 1; }
+    .coin-center .coin-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,.85); letter-spacing: 1px; margin-top: 2px; }
+    /* orbit dots */
+    .orbit-dot {
+      position: absolute; width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(232,160,32,.3);
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .orbit-dot svg { flex-shrink: 0; }
+    /* floating info cards */
+    .float-card {
+      position: absolute; background: var(--white); border-radius: 12px;
+      padding: 10px 14px; box-shadow: 0 8px 28px rgba(0,0,0,.22);
+      display: flex; align-items: center; gap: 10px;
+      animation: floatY 3s ease-in-out infinite;
+      white-space: nowrap; z-index: 5;
+    }
+    .float-card:nth-child(2) { animation-delay: -1s; }
+    .float-card:nth-child(3) { animation-delay: -2s; }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .float-card-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--navy3), var(--navy));
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .float-card .fc-val { font-size: 14px; font-weight: 800; color: var(--navy); }
+    .float-card .fc-label { font-size: 10px; color: var(--muted); }
+
+    /* ── TRUST BAR ── */
+    #trust {
+      background: var(--navy3); padding: 28px 6%;
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500; }
+    .trust-item svg { color: var(--gold2); }
+
+    /* ── STATS ── */
+    #stats { background: var(--off); padding: 70px 6%; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .stat-card {
+      background: var(--white); border-radius: 18px; padding: 36px 28px; text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .stat-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(15,37,84,.12); }
+    .stat-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+    .stat-icon.navy { background: linear-gradient(135deg, var(--navy3), var(--navy)); }
+    .stat-icon.gold  { background: linear-gradient(135deg, var(--gold), var(--gold3)); }
+    .stat-num { font-size: 40px; font-weight: 900; color: var(--navy); letter-spacing: -1px; }
+    .stat-num span { color: var(--gold); }
+    .stat-label { font-size: 13px; color: var(--muted); font-weight: 500; margin-top: 6px; }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 90px 6%; }
+    .sec-label { font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 1.8px; text-transform: uppercase; margin-bottom: 12px; }
+    .sec-title { font-size: clamp(26px,3vw,42px); font-weight: 900; color: var(--navy); line-height: 1.15; margin-bottom: 16px; letter-spacing: -.5px; }
+    .sec-sub { font-size: 16px; color: var(--muted); line-height: 1.75; max-width: 560px; }
+    .text-center { text-align: center; }
+    .text-center .sec-sub { margin: 0 auto; }
+
+    /* ── FEATURES ── */
+    #features { background: var(--white); }
+    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 60px; }
+    .feat-card {
+      border: 1.5px solid var(--border); border-radius: 20px; padding: 36px 30px;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .feat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .feat-card:hover::before { transform: scaleX(1); }
+    .feat-card:hover { border-color: transparent; transform: translateY(-6px); box-shadow: 0 20px 50px rgba(15,37,84,.12); }
+    .feat-icon-wrap {
+      width: 58px; height: 58px; border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy3), var(--navy2));
+      display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+    }
+    .feat-card h4 { font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+    .feat-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── HOW IT WORKS ── */
+    #how { background: var(--navy3); padding: 90px 6%; }
+    #how .sec-title { color: var(--white); }
+    #how .sec-sub { color: rgba(255,255,255,.65); }
+    .steps-wrap { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; margin-top: 60px; position: relative; }
+    .steps-line {
+      position: absolute; top: 36px; left: calc(12.5% + 28px); right: calc(12.5% + 28px);
+      height: 2px; background: linear-gradient(90deg, var(--gold3), var(--gold2));
+      z-index: 0;
+    }
+    .step-card { text-align: center; position: relative; z-index: 1; }
+    .step-num {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold3));
+      color: var(--white); font-size: 24px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+      box-shadow: 0 8px 24px rgba(232,160,32,.4);
+      border: 4px solid var(--navy3);
+    }
+    .step-card h4 { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .step-card p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.65; }
+
+    /* ── LOANS ── */
+    #loans { background: var(--off); }
+    .loans-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 60px; }
+    .loan-card {
+      border-radius: 22px; padding: 40px 32px; position: relative;
+      overflow: hidden; transition: transform .25s;
+    }
+    .loan-card.light { background: var(--white); border: 1.5px solid var(--border); }
+    .loan-card.dark  { background: linear-gradient(135deg, var(--navy3), var(--navy)); }
+    .loan-card:hover { transform: translateY(-6px); }
+    .loan-badge-pill {
+      position: absolute; top: 22px; right: 22px;
+      background: linear-gradient(135deg, var(--gold), var(--gold3));
+      color: var(--white); font-size: 10px; font-weight: 800;
+      padding: 5px 12px; border-radius: 100px; letter-spacing: .5px;
+    }
+    .loan-svg-wrap {
+      width: 60px; height: 60px; border-radius: 18px; margin-bottom: 22px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .loan-card.light .loan-svg-wrap { background: linear-gradient(135deg, var(--navy3), var(--navy)); }
+    .loan-card.dark  .loan-svg-wrap { background: rgba(255,255,255,.12); }
+    .loan-card h4 { font-size: 22px; font-weight: 900; margin-bottom: 12px; }
+    .loan-card.light h4 { color: var(--navy); }
+    .loan-card.dark  h4 { color: var(--white); }
+    .loan-card.light p { color: var(--muted); }
+    .loan-card.dark  p { color: rgba(255,255,255,.65); }
+    .loan-card p { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+    .loan-details { display: flex; flex-direction: column; gap: 8px; }
+    .loan-detail-row {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 600;
+    }
+    .loan-card.light .loan-detail-row { color: var(--navy); }
+    .loan-card.dark  .loan-detail-row { color: rgba(255,255,255,.8); }
+    .loan-detail-row svg { color: var(--gold); flex-shrink: 0; }
+
+    /* ── ELIGIBILITY ── */
+    #eligibility { background: var(--white); }
+    .elig-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; margin-top: 60px; }
+    .elig-list { display: flex; flex-direction: column; gap: 16px; }
+    .elig-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--off); border-radius: 14px; padding: 20px 22px;
+    }
+    .elig-check {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #22c55e, #15803d);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .elig-item p { font-size: 14px; color: var(--text); font-weight: 500; line-height: 1.55; padding-top: 4px; }
+    .elig-panel {
+      background: linear-gradient(145deg, var(--navy3), var(--navy));
+      border-radius: 24px; padding: 48px 40px; text-align: center; color: var(--white);
+      position: relative; overflow: hidden;
+    }
+    .elig-panel::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(232,160,32,.08);
+    }
+    .elig-amount { font-size: 68px; font-weight: 900; color: var(--gold2); line-height: 1; }
+    .elig-amount-sub { font-size: 14px; color: rgba(255,255,255,.6); margin-bottom: 32px; margin-top: 4px; }
+    .elig-time {
+      background: rgba(232,160,32,.15); border: 1px solid rgba(232,160,32,.3);
+      border-radius: 14px; padding: 18px 24px; margin-bottom: 28px;
+    }
+    .elig-time-num { font-size: 42px; font-weight: 900; color: var(--gold2); }
+    .elig-time-label { font-size: 13px; color: rgba(255,255,255,.7); }
+    .elig-tags-wrap { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .elig-tag {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: var(--white); padding: 8px 16px; border-radius: 100px;
+      font-size: 12px; font-weight: 600;
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--off); }
+    .why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 60px; }
+    .why-card {
+      display: flex; gap: 20px; align-items: flex-start;
+      background: var(--white); border-radius: 18px; padding: 28px 26px;
+      border: 1.5px solid var(--border);
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .why-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(232,160,32,.12); }
+    .why-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy3), var(--navy));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-card h4 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .why-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── FAQ ── */
+    #faq { background: var(--white); }
+    .faq-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 60px; }
+    .faq-list { display: flex; flex-direction: column; gap: 14px; }
+    .faq-item { border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .faq-q {
+      width: 100%; background: none; border: none; text-align: left;
+      padding: 20px 24px; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-size: 15px; font-weight: 700; color: var(--navy);
+    }
+    .faq-icon { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: var(--off); display: flex; align-items: center; justify-content: center;
+      transition: background .2s; }
+    .faq-q.open .faq-icon { background: var(--gold); }
+    .faq-q.open .faq-icon svg { transform: rotate(45deg); color: white; }
+    .faq-icon svg { transition: transform .3s; }
+    .faq-a { padding: 0 24px 20px; font-size: 14px; color: var(--muted); line-height: 1.75; display: none; }
+    .faq-a.show { display: block; }
+    .faq-panel {
+      background: linear-gradient(145deg, var(--navy3), var(--navy));
+      border-radius: 24px; padding: 44px 36px; color: var(--white);
+      position: sticky; top: 90px;
+    }
+    .faq-panel h3 { font-size: 26px; font-weight: 900; margin-bottom: 16px; }
+    .faq-panel h3 span { color: var(--gold2); }
+    .faq-panel p { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 28px; }
+    .faq-contact { display: flex; flex-direction: column; gap: 14px; }
+    .faq-contact-item {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,.08); border-radius: 12px; padding: 16px 18px;
+    }
+    .faq-contact-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(232,160,32,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .faq-contact-item p { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 2px; }
+    .faq-contact-item strong { font-size: 14px; color: var(--white); }
+
+    /* ── CTA ── */
+    #cta { background: var(--off); }
+    @media(max-width:768px) {
+      #cta > div:first-child { grid-template-columns: 1fr !important; margin: 0 !important; border-radius: 0 !important; }
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy3); color: rgba(255,255,255,.6); padding: 60px 6% 32px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand p { font-size: 14px; line-height: 1.8; margin-top: 16px; max-width: 300px; }
+    footer h5 { font-size: 11px; font-weight: 800; color: var(--white); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    footer ul a { text-decoration: none; color: rgba(255,255,255,.55); font-size: 14px; transition: color .2s; }
+    footer ul a:hover { color: var(--gold2); }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,.1); margin-bottom: 28px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 13px; }
+    .rbi-pill {
+      background: rgba(232,160,32,.15); border: 1px solid rgba(232,160,32,.3);
+      color: var(--gold2); padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 700;
+    }
+
+    /* ── REVIEWS CAROUSEL ── */
+    .rev-track {
+      display: flex; gap: 24px;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+      cursor: grab;
+      align-items: stretch;
+    }
+    .rev-track:active { cursor: grabbing; }
+    .rev-card {
+      flex: 0 0 calc((100% - 48px) / 3);
+      width: calc((100% - 48px) / 3);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 28px 24px;
+      box-sizing: border-box;
+      transition: border-color .25s, transform .25s;
+    }
+    .rev-card:hover { border-color: rgba(232,160,32,.4); }
+    .rev-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .rev-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      color: #fff; font-size: 20px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .rev-name { font-size: 15px; font-weight: 800; color: var(--white); }
+    .rev-role { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 2px; }
+    .rev-amount {
+      margin-left: auto; background: rgba(232,160,32,.15);
+      border: 1px solid rgba(232,160,32,.3);
+      color: var(--gold2); font-size: 12px; font-weight: 700;
+      padding: 5px 12px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    }
+    .rev-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .rev-text { font-size: 14px; color: rgba(255,255,255,.72); line-height: 1.75; margin-bottom: 20px; }
+    .rev-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; color: #4ade80;
+      background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.25);
+      padding: 5px 12px; border-radius: 100px;
+    }
+    /* arrows */
+    .rev-arrow {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: var(--white); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s;
+    }
+    .rev-arrow:hover { background: var(--gold); border-color: var(--gold); }
+    /* dots */
+    .rev-dots { display: flex; gap: 8px; justify-content: center; margin-top: 32px; }
+    .rev-dot {
+      width: 8px; height: 8px; border-radius: 100px;
+      background: rgba(255,255,255,.25); border: none; cursor: pointer;
+      transition: width .3s, background .3s;
+    }
+    .rev-dot.active { width: 28px; background: var(--gold); }
+
+    /* ── STEP ANIMATION ── */
+    .step-card {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .step-card.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── STAT CARD ANIMATION ── */
+    .stat-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .stat-card.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── HERO VISUAL: floating money bills ── */
+    .hero-visual { position:relative; display:flex; align-items:center; justify-content:center; z-index:1; width:100%; }
+    .money-scene { position:relative; width:340px; height:380px; }
+    .money-bill {
+      position:absolute;
+      background:linear-gradient(135deg,var(--navy) 0%,#1e4d8c 100%);
+      border:2px solid rgba(232,160,32,.3);
+      border-radius:16px;
+      display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:8px;
+      box-shadow:0 16px 48px rgba(0,0,0,.35);
+      color:var(--white);
+    }
+    .bill-1 { width:220px; height:120px; top:20px; left:50%; transform:translateX(-50%) rotate(-6deg); animation:bill1float 4s ease-in-out infinite; }
+    .bill-2 { width:220px; height:120px; top:100px; left:50%; transform:translateX(-50%) rotate(3deg); animation:bill2float 4s ease-in-out infinite .6s; z-index:2; }
+    .bill-3 { width:220px; height:120px; top:180px; left:50%; transform:translateX(-50%) rotate(-2deg); animation:bill3float 4s ease-in-out infinite 1.2s; z-index:3; background:linear-gradient(135deg,var(--gold3),var(--gold)); }
+    @keyframes bill1float { 0%,100%{transform:translateX(-50%) rotate(-6deg) translateY(0)} 50%{transform:translateX(-50%) rotate(-6deg) translateY(-10px)} }
+    @keyframes bill2float { 0%,100%{transform:translateX(-50%) rotate(3deg) translateY(0)} 50%{transform:translateX(-50%) rotate(3deg) translateY(-14px)} }
+    @keyframes bill3float { 0%,100%{transform:translateX(-50%) rotate(-2deg) translateY(0)} 50%{transform:translateX(-50%) rotate(-2deg) translateY(-8px)} }
+    .bill-rupee { font-size:32px; font-weight:900; color:var(--gold2); }
+    .bill-3 .bill-rupee { color:var(--white); }
+    .bill-text { font-size:11px; font-weight:700; color:rgba(255,255,255,.7); letter-spacing:1px; }
+    .bill-3 .bill-text { color:rgba(255,255,255,.9); }
+    /* small orbit badges */
+    .orbit-badge {
+      position:absolute; background:var(--white); border-radius:12px;
+      padding:10px 14px; display:flex; align-items:center; gap:8px;
+      box-shadow:0 8px 28px rgba(0,0,0,.22); z-index:10;
+      animation:floatY 3s ease-in-out infinite;
+    }
+    .orbit-badge:nth-child(5){ animation-delay:.8s; }
+    .orbit-badge:nth-child(6){ animation-delay:1.6s; }
+    .ob-icon { width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,var(--navy3),var(--navy)); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .ob-val { font-size:14px; font-weight:800; color:var(--navy); }
+    .ob-lbl { font-size:10px; color:var(--muted); }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-visual { display: none; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:700px) {
+      .rev-card { min-width: 85vw; }
+    }
+    @media(max-width:768px) {
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+      #hero { padding: 60px 5% 48px; }
+      .features-grid, .loans-grid, .why-grid, .faq-cols { grid-template-columns: 1fr; }
+      .steps-wrap { grid-template-columns: 1fr 1fr; }
+      .steps-line { display: none; }
+      .elig-wrap { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media(max-width:480px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .steps-wrap { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-text">Julania <span>Finance</span></div>
+  </a>
+  <ul id="navMenu">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#loans">Personal Loan</a></li>
+    <li><a href="#eligibility">Eligibility</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="scrollTo('cta')">Apply Now</button>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      RBI Registered NBFC — Trusted &amp; Secure
+    </div>
+    <h1>Get Up to<br/><span>₹1 Lakh Loan</span><br/>in 10 Minutes</h1>
+    <p class="hero-tagline">100% digital, paperless, and collateral-free. Apply from your phone and get funds directly in your bank account — no branch visit needed.</p>
+    <div class="hero-pills">
+      <div class="pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        10-Min Disbursal
+      </div>
+      <div class="pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Zero Collateral
+      </div>
+      <div class="pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        No Paperwork
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-gold">Apply Now — It's Free</a>
+      <a href="#how" class="btn-white-outline">See How it Works</a>
+    </div>
+  </div>
+
+  <!-- ANIMATED HERO VISUAL — floating bills -->
+  <div class="hero-visual">
+    <div class="money-scene">
+      <!-- bill 1 — back -->
+      <div class="money-bill bill-1">
+        <div class="bill-rupee">₹</div>
+        <div class="bill-text">PERSONAL LOAN</div>
+      </div>
+      <!-- bill 2 — middle -->
+      <div class="money-bill bill-2">
+        <div class="bill-rupee">₹50,000</div>
+        <div class="bill-text">INSTANT APPROVAL</div>
+      </div>
+      <!-- bill 3 — front gold -->
+      <div class="money-bill bill-3">
+        <div class="bill-rupee">₹1,00,000</div>
+        <div class="bill-text">IN 10 MINUTES</div>
+      </div>
+
+      <!-- floating badges -->
+      <div class="orbit-badge" style="top:0;right:-20px;">
+        <div class="ob-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="ob-val">10 Min</div>
+          <div class="ob-lbl">Disbursal</div>
+        </div>
+      </div>
+
+      <div class="orbit-badge" style="bottom:20px;left:-20px;">
+        <div class="ob-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="ob-val">RBI</div>
+          <div class="ob-lbl">Registered</div>
+        </div>
+      </div>
+
+      <div class="orbit-badge" style="bottom:100px;right:-20px;">
+        <div class="ob-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
+        </div>
+        <div>
+          <div class="ob-val">50K+</div>
+          <div class="ob-lbl">Borrowers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    RBI Registered NBFC
+  </div>
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    256-bit Encryption
+  </div>
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Funds in 10 Minutes
+  </div>
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    50,000+ Happy Borrowers
+  </div>
+</div>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="text-center" style="margin-bottom:0">
+    <div class="sec-label">Numbers that Speak</div>
+    <div class="sec-title">Trusted by Thousands Across India</div>
+  </div>
+  <div class="stats-grid" style="margin-top:52px">
+    <div class="stat-card">
+      <div class="stat-icon navy">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="stat-num" data-target="50" data-suffix="K+">0<span>K+</span></div>
+      <div class="stat-label">Happy Borrowers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon gold">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>
+      </div>
+      <div class="stat-num" data-target="200" data-prefix="₹" data-suffix="Cr+">₹0<span>Cr+</span></div>
+      <div class="stat-label">Total Loans Disbursed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon navy">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="stat-num" data-target="10" data-suffix="Min">0<span>Min</span></div>
+      <div class="stat-label">Average Disbursal Time</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon gold">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="stat-num" data-target="4.8" data-suffix="★" data-decimal="1">0<span>★</span></div>
+      <div class="stat-label">Customer Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="text-center">
+    <div class="sec-label">Why Julania Finance</div>
+    <div class="sec-title">Built for Speed, Trust &amp; Clarity</div>
+    <div class="sec-sub">We removed every friction point from the traditional lending process so you can get funds when you actually need them.</div>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h4>Instant Approval</h4>
+      <p>AI-powered credit assessment delivers a loan decision in under 60 seconds — day or night, no human approval queue.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h4>Fully Paperless</h4>
+      <p>Upload your PAN and Aadhaar digitally from your phone. No physical documents, no branch visits, no waiting rooms.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <h4>Bank-Grade Security</h4>
+      <p>256-bit encryption with RBI-compliant data handling. Your personal and financial data is protected at every step.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>
+      </div>
+      <h4>Transparent Pricing</h4>
+      <p>See your exact EMI, total interest, and all charges before you accept. No hidden fees, no nasty surprises on your statement.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <h4>Direct Bank Transfer</h4>
+      <p>Approved funds are transferred directly to your registered bank account — no intermediaries, no additional steps.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <h4>Flexible Repayment</h4>
+      <p>Choose 1 to 12 month tenures with auto-debit setup and prepayment options — repay on your schedule.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="text-center">
+    <div class="sec-label">Simple Process</div>
+    <div class="sec-title">Loan in Your Account in 4 Steps</div>
+    <div class="sec-sub">From the moment you apply to funds in your account — the entire journey takes under 10 minutes.</div>
+  </div>
+  <div class="steps-wrap">
+    <div class="steps-line"></div>
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h4>Apply Online</h4>
+      <p>Fill in your basic details and loan amount on our website or app. Takes less than 3 minutes.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h4>Upload Documents</h4>
+      <p>Submit PAN, Aadhaar, and last 3-month bank statement — all from your phone, digitally.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h4>Instant Decision</h4>
+      <p>Our AI engine reviews your profile and provides a loan offer with exact EMI within minutes.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h4>Funds Credited</h4>
+      <p>Accept the offer and money is transferred to your bank account within 10 minutes. Done.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOANS -->
+<section id="loans">
+  <div class="text-center">
+    <div class="sec-label">Our Product</div>
+    <div class="sec-title">Personal Loan — Simple, Fast &amp; Fair</div>
+    <div class="sec-sub">Up to ₹1 Lakh disbursed in 10 minutes. Zero collateral, minimal documents, fully digital process.</div>
+  </div>
+
+  <!-- Single product — wide layout -->
+  <div style="margin-top:60px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+    <div class="loan-card dark" style="border-radius:24px; padding:48px 40px;">
+      <div class="loan-badge-pill">ONLY PRODUCT</div>
+      <div class="loan-svg-wrap" style="width:68px;height:68px;border-radius:20px;margin-bottom:28px;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h4 style="font-size:28px; margin-bottom:14px;">Personal Loan</h4>
+      <p style="font-size:15px; line-height:1.75; margin-bottom:32px;">For medical emergencies, home repairs, travel, education expenses, wedding costs, or any personal need — we fund it fast with zero paperwork hassle.</p>
+      <div class="loan-details" style="gap:14px;">
+        <div class="loan-detail-row" style="font-size:15px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>
+          Loan Amount: ₹5,000 – ₹1,00,000
+        </div>
+        <div class="loan-detail-row" style="font-size:15px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Tenure: 1 to 12 Months
+        </div>
+        <div class="loan-detail-row" style="font-size:15px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Disbursal in 10 Minutes
+        </div>
+        <div class="loan-detail-row" style="font-size:15px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Interest from 12% per annum
+        </div>
+        <div class="loan-detail-row" style="font-size:15px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Zero Collateral Required
+        </div>
+      </div>
+    </div>
+
+    <!-- Use cases grid -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+      <div style="background:var(--off); border-radius:18px; padding:28px 22px; border:1.5px solid var(--border);">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--navy3),var(--navy));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h5 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;">Medical Emergency</h5>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;">Hospital bills, surgery costs, medicines — funded instantly when it matters most.</p>
+      </div>
+      <div style="background:var(--off); border-radius:18px; padding:28px 22px; border:1.5px solid var(--border);">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--navy3),var(--navy));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h5 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;">Home Repairs</h5>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;">Renovation, plumbing, electrical — get your home fixed without delay.</p>
+      </div>
+      <div style="background:var(--off); border-radius:18px; padding:28px 22px; border:1.5px solid var(--border);">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--navy3),var(--navy));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h5 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;">Education</h5>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;">Fees, course materials, or skill upgrades — invest in yourself today.</p>
+      </div>
+      <div style="background:var(--off); border-radius:18px; padding:28px 22px; border:1.5px solid var(--border);">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--navy3),var(--navy));display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h5 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;">Travel &amp; Events</h5>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;">Trips, weddings, or family celebrations — enjoy the moment, pay later.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section id="eligibility">
+  <div>
+    <div class="sec-label">Eligibility Criteria</div>
+    <div class="sec-title">Who Can Apply for a Loan?</div>
+    <div class="sec-sub">Simple and inclusive criteria. Most salaried and self-employed individuals qualify easily — check yours in seconds.</div>
+  </div>
+  <div class="elig-wrap">
+    <div class="elig-list">
+      <div class="elig-item">
+        <div class="elig-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>Indian citizen aged <strong>21 – 58 years</strong></p>
+      </div>
+      <div class="elig-item">
+        <div class="elig-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>Salaried professional with minimum <strong>₹15,000/month</strong> net income</p>
+      </div>
+      <div class="elig-item">
+        <div class="elig-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>Self-employed with <strong>1+ year</strong> of consistent business operations</p>
+      </div>
+      <div class="elig-item">
+        <div class="elig-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>Valid <strong>PAN card</strong> and <strong>Aadhaar card</strong> linked to mobile number</p>
+      </div>
+      <div class="elig-item">
+        <div class="elig-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>Active bank account with <strong>3-month salary credit</strong> history</p>
+      </div>
+      <div class="elig-item">
+        <div class="elig-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>CIBIL score of <strong>650 or above</strong> (lower scores considered case-by-case)</p>
+      </div>
+    </div>
+
+    <div class="elig-panel">
+      <div class="elig-amount">₹1L</div>
+      <div class="elig-amount-sub">Maximum Loan Amount — Zero Collateral</div>
+      <div class="elig-time">
+        <div class="elig-time-num">10</div>
+        <div class="elig-time-label">Minutes to Disbursal — Fastest in Industry</div>
+      </div>
+      <div class="elig-tags-wrap">
+        <span class="elig-tag">No Collateral</span>
+        <span class="elig-tag">No Guarantor</span>
+        <span class="elig-tag">100% Digital</span>
+        <span class="elig-tag">Instant KYC</span>
+        <span class="elig-tag">CIBIL Check Free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="text-center">
+    <div class="sec-label">Our Promise</div>
+    <div class="sec-title">Why Thousands Choose Julania Finance</div>
+    <div class="sec-sub">More than speed — we are committed to fairness, safety, and putting borrowers first.</div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h4>RBI Registered NBFC</h4>
+        <p>Julania Finance is a fully licensed Non-Banking Financial Company registered with the Reserve Bank of India. Every rupee lent follows strict regulatory guidelines.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <h4>10-Minute Disbursal</h4>
+        <p>From approval to bank credit in 10 minutes flat. We've built our technology stack specifically to eliminate delays at every stage of the loan journey.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div>
+        <h4>Minimal Documentation</h4>
+        <p>Just PAN, Aadhaar, and bank statement. No salary slips, no ITR, no NOC letters — we respect your time.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div>
+        <h4>Dedicated Support</h4>
+        <p>Our customer care team is available Monday to Saturday, ready to guide you through every step — application, approval, repayment, and beyond.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="background:var(--navy3);padding:90px 6%;overflow:hidden;">
+  <div class="text-center">
+    <div class="sec-label" style="color:var(--gold2);">Testimonials</div>
+    <div class="sec-title" style="color:var(--white);">What Our Customers Say</div>
+    <div class="sec-sub" style="color:rgba(255,255,255,.6);margin:0 auto;">Real stories from real people whose financial needs we fulfilled — fast, fair, and hassle-free.</div>
+  </div>
+
+  <!-- carousel arrows outside, clip div inside -->
+  <div style="margin-top:52px;position:relative;display:flex;align-items:center;gap:16px;">
+    <button class="rev-arrow" onclick="window.revMove(-1)" aria-label="Previous" style="position:static;transform:none;flex-shrink:0;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+
+  <div class="rev-outer" style="flex:1;overflow:hidden;position:relative;padding:4px 0;">
+    <div class="rev-track" id="revTrack">
+
+      <!-- card 1 -->
+      <div class="rev-card">
+        <div class="rev-top">
+          <div class="rev-avatar" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">R</div>
+          <div class="rev-info">
+            <div class="rev-name">Rahul Sharma</div>
+            <div class="rev-role">Software Engineer, Mumbai</div>
+          </div>
+          <div class="rev-amount">₹80,000</div>
+        </div>
+        <div class="rev-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"Applied at 11 PM for a medical emergency. Approved within minutes, money in my account before midnight. Julania Finance is a lifesaver — no exaggeration."</p>
+        <div class="rev-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
+          Verified Borrower
+        </div>
+      </div>
+
+      <!-- card 2 -->
+      <div class="rev-card">
+        <div class="rev-top">
+          <div class="rev-avatar" style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">P</div>
+          <div class="rev-info">
+            <div class="rev-name">Priya Mehta</div>
+            <div class="rev-role">Teacher, Pune</div>
+          </div>
+          <div class="rev-amount">₹50,000</div>
+        </div>
+        <div class="rev-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"No paperwork, no branch visit. I uploaded my documents on my phone during lunch break and had the loan amount by evening. The whole process was incredibly smooth."</p>
+        <div class="rev-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
+          Verified Borrower
+        </div>
+      </div>
+
+      <!-- card 3 -->
+      <div class="rev-card">
+        <div class="rev-top">
+          <div class="rev-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706);">A</div>
+          <div class="rev-info">
+            <div class="rev-name">Arjun Nair</div>
+            <div class="rev-role">Sales Manager, Chennai</div>
+          </div>
+          <div class="rev-amount">₹1,00,000</div>
+        </div>
+        <div class="rev-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"Got the full ₹1 lakh for my home renovation. Interest rate was transparent from day one, no hidden charges. Will definitely use Julania Finance again."</p>
+        <div class="rev-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
+          Verified Borrower
+        </div>
+      </div>
+
+      <!-- card 4 -->
+      <div class="rev-card">
+        <div class="rev-top">
+          <div class="rev-avatar" style="background:linear-gradient(135deg,#10b981,#059669);">S</div>
+          <div class="rev-info">
+            <div class="rev-name">Sunita Desai</div>
+            <div class="rev-role">Nurse, Hyderabad</div>
+          </div>
+          <div class="rev-amount">₹30,000</div>
+        </div>
+        <div class="rev-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#dce4f0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"My daughter's school fees were due and I was short. Julania Finance processed my loan in under 10 minutes. The support team was also very helpful and patient."</p>
+        <div class="rev-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
+          Verified Borrower
+        </div>
+      </div>
+
+      <!-- card 5 -->
+      <div class="rev-card">
+        <div class="rev-top">
+          <div class="rev-avatar" style="background:linear-gradient(135deg,#ef4444,#dc2626);">K</div>
+          <div class="rev-info">
+            <div class="rev-name">Karan Malhotra</div>
+            <div class="rev-role">Accountant, Delhi</div>
+          </div>
+          <div class="rev-amount">₹70,000</div>
+        </div>
+        <div class="rev-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a020"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"I was skeptical at first about an online loan. But Julania Finance is 100% legit — RBI registered, transparent pricing, and money came faster than I expected. Highly recommend."</p>
+        <div class="rev-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/></svg>
+          Verified Borrower
+        </div>
+      </div>
+
+    </div><!-- /rev-track -->
+  </div><!-- /rev-outer -->
+
+    <button class="rev-arrow" onclick="window.revMove(1)" aria-label="Next" style="position:static;transform:none;flex-shrink:0;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div><!-- /flex wrapper -->
+
+  <!-- dots -->
+  <div class="rev-dots" id="revDots"></div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="text-center">
+    <div class="sec-label">FAQ</div>
+    <div class="sec-title">Got Questions? We Have Answers.</div>
+  </div>
+  <div class="faq-cols">
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How quickly will I receive the loan amount?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-a">Once approved and documents are verified, funds are credited to your bank account within 10 minutes on business days. We guarantee this processing time.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is the maximum loan I can get?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-a">You can borrow up to ₹1,00,000 (One Lakh Rupees). The minimum loan amount is ₹5,000. Your actual eligibility depends on your income, credit score, and repayment history.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is any collateral or guarantor required?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-a">No. All Julania Finance loans are completely collateral-free and require no guarantor. Your creditworthiness and income are sufficient.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is the interest rate charged?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-a">Interest rates start from 12% per annum and vary based on your credit score, loan amount, and tenure. You will see the exact rate before accepting — no hidden surprises.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I repay my loan before the due date?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-a">Yes. You can prepay or foreclose your loan at any time. Minimal prepayment charges apply after the lock-in period and are clearly disclosed at the time of application.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is Julania Finance legitimate and regulated?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3c6e" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-a">Absolutely. Julania Finance is a Reserve Bank of India (RBI) registered Non-Banking Financial Company (NBFC). We comply with all RBI guidelines on lending, data privacy, and customer protection.</div>
+      </div>
+    </div>
+
+    <div class="faq-panel">
+      <h3>Still have <span>questions?</span></h3>
+      <p>Our loan experts are available Monday to Saturday, 9am – 7pm. Reach us on phone, email, or WhatsApp — we're here to help you make the right decision.</p>
+      <div class="faq-contact">
+        <div class="faq-contact-item">
+          <div class="faq-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <p>Phone / WhatsApp</p>
+            <strong>+91 80000 00000</strong>
+          </div>
+        </div>
+        <div class="faq-contact-item">
+          <div class="faq-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8a020" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <p>Email Support</p>
+            <strong>support@julania.finance</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" style="padding:0;background:var(--off);">
+  <div style="
+    background: linear-gradient(135deg, var(--navy3) 0%, var(--navy) 60%, #1a4080 100%);
+    margin: 0 4%; border-radius: 28px;
+    padding: 70px 6%;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+    position: relative; overflow: hidden;
+  ">
+    <!-- BG decorations -->
+    <div style="position:absolute;top:-80px;right:220px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(232,160,32,.12) 0%,transparent 70%);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-60px;left:40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none;"></div>
+    <!-- dashed ring accent -->
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);width:320px;height:320px;border-radius:50%;border:1.5px dashed rgba(232,160,32,.15);pointer-events:none;"></div>
+    <div style="position:absolute;right:100px;top:50%;transform:translateY(-50%);width:220px;height:220px;border-radius:50%;border:1.5px solid rgba(232,160,32,.08);pointer-events:none;"></div>
+
+    <!-- LEFT: text -->
+    <div style="position:relative;z-index:1;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,160,32,.15);border:1px solid rgba(232,160,32,.3);color:var(--gold2);padding:6px 16px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.6px;margin-bottom:20px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        RBI REGISTERED NBFC
+      </div>
+      <h2 style="font-size:clamp(26px,3.2vw,44px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:16px;letter-spacing:-.5px;">
+        Get Up to <span style="color:var(--gold2);">₹1 Lakh</span><br/>in Just 10 Minutes
+      </h2>
+      <p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;max-width:480px;margin-bottom:0;">
+        No paperwork. No branch visit. 100% digital personal loan — apply now and get funds directly in your bank account.
+      </p>
+    </div>
+
+    <!-- RIGHT: action box -->
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:240px;">
+      <a href="#" class="btn-gold" style="width:100%;text-align:center;font-size:16px;padding:16px 28px;">
+        Apply Now — Free
+      </a>
+      <a href="tel:+918000000000" style="width:100%;text-align:center;display:inline-block;border:2px solid rgba(255,255,255,.25);color:var(--white);padding:14px 28px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#f5b942'" onmouseout="this.style.borderColor='rgba(255,255,255,.25)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Our Experts
+      </a>
+      <!-- mini trust pills -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px;">
+        <span style="font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Zero Collateral
+        </span>
+        <span style="font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          No Credit Impact
+        </span>
+        <span style="font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          100% Digital
+        </span>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 4% 60px;text-align:center;">
+    <p style="font-size:12px;color:var(--muted);">By applying you agree to our Terms &amp; Conditions. Julania Finance is an RBI-registered NBFC. Loans subject to eligibility.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="#">
+        <div class="logo-text">Julania <span>Finance</span></div>
+      </a>
+      <p>A trusted RBI-registered NBFC providing fast, paperless, and transparent loans up to ₹1 Lakh with 10-minute disbursal to individuals across India.</p>
+    </div>
+    <div>
+      <h5>Products</h5>
+      <ul>
+        <li><a href="#loans">Personal Loan</a></li>
+        <li><a href="#loans">Salary Advance</a></li>
+        <li><a href="#loans">Business Loan</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Fair Practice Code</a></li>
+        <li><a href="#">Grievance Policy</a></li>
+        <li><a href="#">RBI Guidelines</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider" />
+  <div class="footer-bottom">
+    <span>© 2026 Julania Finance Pvt. Ltd. All rights reserved.</span>
+    <span class="rbi-pill">RBI Registered NBFC</span>
+    <span>CIN: U65929XX2020PTC000000</span>
+  </div>
+</footer>
+
+<script>
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const ans    = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('show');
+    });
+    if (!isOpen) { btn.classList.add('open'); ans.classList.add('show'); }
+  }
+
+  // Mobile nav
+  let navOpen = false;
+  function toggleNav() {
+    navOpen = !navOpen;
+    const ul = document.getElementById('navMenu');
+    if (navOpen) {
+      Object.assign(ul.style, {
+        display:'flex', flexDirection:'column', position:'absolute',
+        top:'72px', left:'0', right:'0', background:'#0a1a3d',
+        padding:'20px 6%', boxShadow:'0 8px 24px rgba(0,0,0,.3)',
+        zIndex:'998', gap:'20px'
+      });
+    } else {
+      ul.style.display = 'none';
+    }
+  }
+
+  // Scroll helper
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ── REVIEWS CAROUSEL ──
+  // ── REVIEWS CAROUSEL ──
+  (function() {
+    const track    = document.getElementById('revTrack');
+    const dotsWrap = document.getElementById('revDots');
+    const cards    = Array.from(track.querySelectorAll('.rev-card'));
+    const GAP      = 24;
+    const VISIBLE  = () => window.innerWidth < 700 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    let cur = 0, autoTimer;
+
+    function cardW() { return cards[0].getBoundingClientRect().width + GAP; }
+    function maxIdx() { return Math.max(0, cards.length - VISIBLE()); }
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      for (let i = 0; i <= maxIdx(); i++) {
+        const d = document.createElement('button');
+        d.className = 'rev-dot' + (i === cur ? ' active' : '');
+        d.onclick = () => { goTo(i); resetAuto(); };
+        dotsWrap.appendChild(d);
+      }
+    }
+
+    function goTo(idx) {
+      cur = Math.max(0, Math.min(idx, maxIdx()));
+      track.style.transform = `translateX(-${cur * cardW()}px)`;
+      dotsWrap.querySelectorAll('.rev-dot').forEach((d,i) => d.classList.toggle('active', i === cur));
+    }
+
+    function revMove(dir) { goTo(cur + dir); resetAuto(); }
+    window.revMove = revMove;
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(cur >= maxIdx() ? 0 : cur + 1), 4000);
+    }
+
+    // init after layout
+    setTimeout(() => { buildDots(); resetAuto(); }, 100);
+    window.addEventListener('resize', () => { buildDots(); goTo(cur); });
+
+    // drag/swipe
+    let dragX = 0, dragging = false;
+    track.addEventListener('mousedown',  e => { dragging=true; dragX=e.clientX; track.style.transition='none'; });
+    track.addEventListener('mousemove',  e => { if(!dragging) return; if(Math.abs(e.clientX-dragX)>50){ dragging=false; track.style.transition=''; revMove(dragX-e.clientX>0?1:-1); } });
+    track.addEventListener('mouseup',    () => { dragging=false; track.style.transition=''; });
+    track.addEventListener('touchstart', e => { dragX=e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend',   e => { const diff=dragX-e.changedTouches[0].clientX; if(Math.abs(diff)>40) revMove(diff>0?1:-1); });
+  })();
+
+  // ── SCROLL REVEAL: Steps (one by one) ──
+  (function() {
+    const steps = document.querySelectorAll('.step-card');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          steps.forEach((s, i) => {
+            setTimeout(() => s.classList.add('visible'), i * 200);
+          });
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    if (steps.length) obs.observe(steps[0].closest('section') || steps[0]);
+  })();
+
+  // ── SCROLL REVEAL: Stat cards + counter ──
+  (function() {
+    const cards = document.querySelectorAll('.stat-card');
+    let done = false;
+    const obs = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting || done) return;
+      done = true;
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.classList.add('visible');
+          const el = card.querySelector('[data-target]');
+          if (!el) return;
+          const target  = parseFloat(el.dataset.target);
+          const suffix  = el.dataset.suffix || '';
+          const prefix  = el.dataset.prefix || '';
+          const decimal = parseInt(el.dataset.decimal || '0');
+          const dur = 1600, fps = 60, steps2 = dur / (1000 / fps);
+          let cur = 0, step2 = target / steps2;
+          const span = el.querySelector('span');
+          const tick = () => {
+            cur = Math.min(cur + step2, target);
+            const val = decimal ? cur.toFixed(decimal) : Math.round(cur);
+            el.childNodes[0].nodeValue = prefix + val;
+            if (span) span.textContent = suffix;
+            if (cur < target) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }, i * 150);
+      });
+      obs.disconnect();
+    }, { threshold: 0.3 });
+    if (cards.length) obs.observe(cards[0].closest('section') || cards[0]);
+  })();
+
+  // Active nav link on scroll
+  window.addEventListener('scroll', () => {
+    const pos = window.scrollY + 80;
+    document.querySelectorAll('section[id]').forEach(s => {
+      if (pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight) {
+        document.querySelectorAll('nav ul a').forEach(a => a.style.color = '');
+        const lnk = document.querySelector(`nav ul a[href="#${s.id}"]`);
+        if (lnk) lnk.style.color = '#f5b942';
+      }
+    });
+  });
+</script>
+</body>
+</html>
