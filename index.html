@@ -263,11 +263,23 @@
     .footer-socials{display:flex;gap:8px}
     .fs-btn{align-items:center;background:#ffffff14;border:1px solid #ffffff26;border-radius:50%;color:#ffffffb3;display:flex;font-size:14px;height:36px;justify-content:center;transition:var(--transition);width:36px}
     .fs-btn:hover{background:#c9a84c;border-color:#c9a84c;color:#0a1628}
-    .footer-col h4{font-size:16px;font-weight:700;margin-bottom:20px;padding-bottom:10px;position:relative}
+    .footer-col h4{font-size:16px;font-weight:700;margin-bottom:20px;padding-bottom:10px;position:relative;cursor:default}
     .footer-col h4::after{background:#c9a84c;border-radius:2px;bottom:0;content:"";height:2px;left:0;position:absolute;width:32px}
     .footer-col ul{display:flex;flex-direction:column;gap:10px}
     .footer-col ul a{color:#ffffffa6;display:flex;align-items:center;font-size:14px;gap:8px;transition:var(--transition)}
     .footer-col ul a:hover{color:#c9a84c;padding-left:4px}
+    .fc-arrow{display:none;margin-left:auto;transition:transform .3s ease;font-size:12px;color:#c9a84c}
+    @media(max-width:600px){
+      .footer-col h4{cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-bottom:0;padding-bottom:10px}
+      .fc-arrow{display:inline-block}
+      .footer-col ul{max-height:0;overflow:hidden;transition:max-height .4s ease;margin-bottom:0}
+      .footer-col.open ul{max-height:300px;margin-top:10px;margin-bottom:16px}
+      .footer-col.open .fc-arrow{transform:rotate(180deg)}
+      .footer-contact{max-height:0;overflow:hidden;transition:max-height .4s ease;margin-bottom:0}
+      .footer-col.open .footer-contact{max-height:300px;margin-top:10px;margin-bottom:16px}
+      .footer-legal{display:none}
+      .footer-col.open .footer-legal{display:block}
+    }
     .footer-contact{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
     .fc-item{align-items:flex-start;color:#ffffffa6;display:flex;font-size:14px;gap:10px}
     .fc-item i{color:#c9a84c;flex-shrink:0;margin-top:2px}
@@ -904,7 +916,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Our Services</h4>
+          <h4>Our Services <i class="fa fa-chevron-down fc-arrow"></i></h4>
           <ul>
             <li><a href="#services"><i class="fa fa-chevron-right"></i> Salary Advance Loan</a></li>
             <li><a href="#services"><i class="fa fa-chevron-right"></i> Personal Loan</a></li>
@@ -915,7 +927,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Quick Links</h4>
+          <h4>Quick Links <i class="fa fa-chevron-down fc-arrow"></i></h4>
           <ul>
             <li><a href="#home"><i class="fa fa-chevron-right"></i> Home</a></li>
             <li><a href="#about"><i class="fa fa-chevron-right"></i> About Us</a></li>
@@ -926,7 +938,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Contact Us</h4>
+          <h4>Contact Us <i class="fa fa-chevron-down fc-arrow"></i></h4>
           <div class="footer-contact">
             <div class="fc-item"><i class="fa fa-phone"></i> +91 98765 43210</div>
             <div class="fc-item"><i class="fa fa-envelope"></i> support@julania.finance</div>
@@ -1107,6 +1119,15 @@
   }
   document.getElementById('cbCloseBtn').addEventListener('click', closeChat);
   document.getElementById('cbCloseFab').addEventListener('click', closeChat);
+
+  // Footer accordion (mobile only)
+  document.querySelectorAll('.footer-col h4').forEach(h4 => {
+    h4.addEventListener('click', () => {
+      if (window.innerWidth > 600) return;
+      const col = h4.parentElement;
+      col.classList.toggle('open');
+    });
+  });
 
   // Animate on scroll
   const observer = new IntersectionObserver(entries => {
