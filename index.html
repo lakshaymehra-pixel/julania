@@ -49,15 +49,15 @@
     .hamburger.active span:first-child{transform:translateY(7px) rotate(45deg)}
     .hamburger.active span:nth-child(2){opacity:0}
     .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .nav-mobile-logo{display:none}
     @media(max-width:900px){
       .hamburger{display:flex}
-      .nav-links{align-items:flex-start;background:#0a1628;box-shadow:-8px 0 32px #0006;flex-direction:column;gap:4px;height:100vh;padding:24px 32px 40px;position:fixed;right:-100%;top:0;transition:right .35s ease;width:280px;z-index:999}
+      .nav-links{align-items:flex-start;background:#0a1628;box-shadow:-8px 0 32px #0006;flex-direction:column;gap:4px;height:100vh;padding:80px 32px 40px;position:fixed;right:-100%;top:0;transition:right .35s ease;width:280px;z-index:999}
       .nav-links.open{right:0}
       .nav-links a{font-size:16px;padding:12px 16px;width:100%}
       .nav-cta{justify-content:center;margin-left:0;margin-top:16px;width:100%}
-      .nav-mobile-logo{display:flex;align-items:center;gap:10px;padding:12px 16px 24px;border-bottom:1px solid #ffffff1a;width:100%;margin-bottom:8px}
+      .nav-mobile-brand{display:flex;align-items:center;gap:10px;padding:0 16px 20px;border-bottom:1px solid #ffffff1a;width:100%;margin-bottom:8px;position:absolute;top:24px;left:32px}
     }
+    .nav-mobile-brand{display:none}
     /* HERO */
     .hero{align-items:center;background:var(--gradient);display:flex;min-height:100vh;overflow:hidden;padding-top:80px;position:relative}
     .hero-bg-pattern{background-image:radial-gradient(circle at 20% 50%,#1e4fa059 0,transparent 50%),radial-gradient(circle at 80% 20%,#c9a84c1f 0,transparent 40%);inset:0;pointer-events:none;position:absolute}
@@ -359,11 +359,11 @@
         <div class="logo-icon">JF</div>
         <span class="logo-text">Julania <span>Finance</span></span>
       </a>
+      <div class="nav-mobile-brand" id="navMobileBrand">
+        <div class="logo-icon">JF</div>
+        <span class="logo-text">Julania <span>Finance</span></span>
+      </div>
       <div class="nav-links" id="navLinks">
-        <div class="nav-mobile-logo">
-          <div class="logo-icon">JF</div>
-          <span class="logo-text">Julania <span>Finance</span></span>
-        </div>
         <a href="#home" class="active">Home</a>
         <a href="#services">Services</a>
         <a href="#about">About</a>
@@ -1050,13 +1050,16 @@
   // Hamburger
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
+  const navMobileBrand = document.getElementById('navMobileBrand');
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('open');
+    navMobileBrand.style.display = navLinks.classList.contains('open') ? 'flex' : 'none';
   });
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navLinks.classList.remove('open');
+    navMobileBrand.style.display = 'none';
   }));
 
   // Hero visible
