@@ -210,7 +210,9 @@
     .testi-card.featured .testi-name{color:#fff}
     .testi-role{color:#6b7a99;font-size:12px}
     .testi-card.featured .testi-role{color:#fff9}
-    @media(max-width:900px){.testi-grid{grid-template-columns:1fr}.testi-card.featured{transform:none}}
+    @media(max-width:900px){.testi-grid{grid-template-columns:1fr 1fr}.testi-card.featured{transform:none}}
+    @media(max-width:560px){.testi-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:400px){.testi-grid{grid-template-columns:1fr}}
     /* FAQ */
     .faq-section{background:#f4f7fc}
     .faq-list{display:flex;flex-direction:column;gap:12px;margin:0 auto;max-width:800px}
@@ -317,7 +319,7 @@
     .cb-input::placeholder{color:#9ca3af}
     .cb-send{align-items:center;background:linear-gradient(135deg,#c9a84c,#f0c84a);border:none;border-radius:50%;box-shadow:0 4px 12px #c9a84c59;color:#0d2348;cursor:pointer;display:flex;flex-shrink:0;font-size:15px;height:40px;justify-content:center;transition:transform .2s ease,box-shadow .2s ease;width:40px}
     .cb-send:hover{box-shadow:0 6px 18px #c9a84c80;transform:scale(1.12)}
-    @media(max-width:480px){.cb-window{bottom:100px;height:480px;left:8px;right:8px;width:auto}.cb-fab{bottom:20px;left:16px}}
+    @media(max-width:480px){.cb-window{bottom:100px;height:480px;left:8px;right:8px;width:auto}.cb-fab{bottom:20px;left:16px}.cb-intro-bubble{display:none}}
     /* SCROLL TOP */
     .scroll-top-btn{align-items:center;background:var(--gradient-gold);border:none;border-radius:50%;bottom:32px;box-shadow:var(--shadow-lg);color:#0a1628;cursor:pointer;display:flex;font-size:18px;height:48px;justify-content:center;position:fixed;right:32px;transition:var(--transition);width:48px;z-index:999}
     .scroll-top-btn:hover{transform:translateY(-4px)}
