@@ -127,17 +127,17 @@ section{padding:90px 0}
 .service-card{background:#fff;border-radius:24px;box-shadow:0 4px 24px #0a162812;display:flex;flex-direction:column;overflow:hidden;transition:var(--transition)}
 .service-card:hover{box-shadow:0 16px 48px #0a162824;transform:translateY(-6px)}
 .sc-header{overflow:hidden;padding:32px 28px 48px;position:relative}
-.sc-header-bg{inset:0;opacity:.92;position:absolute}
+.sc-header-bg{inset:0;opacity:.92;position:absolute;pointer-events:none;z-index:0}
 .sc-header-content{position:relative;z-index:1}
 .sc-icon-wrap{align-items:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:#ffffff38;border:1px solid #ffffff59;border-radius:16px;color:#fff;display:flex;font-size:24px;height:56px;justify-content:center;margin-bottom:16px;transition:transform .3s ease;width:56px}
 .service-card:hover .sc-icon-wrap{background:#ffffff52;transform:scale(1.1) rotate(-4deg)}
 .sc-title{color:#fff;font-size:20px;font-weight:700;margin-bottom:6px}
 .sc-tagline{color:#ffffffbf;font-size:13px}
-.sc-body{display:flex;flex:1;flex-direction:column;padding:24px 28px 28px}
+.sc-body{display:flex;flex:1;flex-direction:column;padding:24px 28px 28px;position:relative;z-index:1}
 .sc-desc{color:#6b7a99;font-size:14px;line-height:1.75;margin-bottom:20px}
 .sc-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .sc-pill{align-items:center;border:1px solid;border-radius:50px;display:inline-flex;font-size:12px;font-weight:600;gap:5px;padding:5px 12px}
-.sc-cta{align-items:center;border:none;border-radius:50px;color:#fff;cursor:pointer;display:inline-flex;font-family:Poppins,sans-serif;font-size:14px;font-weight:700;gap:8px;margin-top:auto;padding:12px 22px;text-decoration:none;transition:all .25s ease;width:fit-content}
+.sc-cta{align-items:center;border:none;border-radius:50px;color:#fff;cursor:pointer;display:inline-flex;font-family:Poppins,sans-serif;font-size:14px;font-weight:700;gap:8px;margin-top:auto;padding:12px 22px;text-decoration:none;transition:all .25s ease;width:fit-content;position:relative;z-index:2}
 .sc-cta:hover{box-shadow:0 8px 24px #0003;gap:14px;transform:translateX(3px)}
 .sc-theme-1 .sc-header-bg{background:linear-gradient(135deg,#1a3a6e,#0d2348)}
 .sc-theme-1 .sc-pill{background:#1a3a6e14;border-color:#1a3a6e33;color:#1a3a6e}
@@ -1290,6 +1290,7 @@ document.querySelectorAll('.stat-card,.why-card,.testi-card,.process-step').forE
 </script>
 </body>
 </html>
+
 
 
 
