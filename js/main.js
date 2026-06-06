@@ -11,13 +11,13 @@ const navLinks = document.getElementById('navLinks');
 const navOverlay = document.getElementById('navOverlay');
 
 function openNav() {
-  hamburger.classList.add('active');
+  hamburger.style.display = 'none';
   navLinks.classList.add('open');
   navOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeNav() {
-  hamburger.classList.remove('active');
+  hamburger.style.display = '';
   navLinks.classList.remove('open');
   navOverlay.classList.remove('open');
   document.body.style.overflow = '';

@@ -33,20 +33,22 @@ section{padding:90px 0}
 .nav-cta{font-size:14px!important;margin-left:8px;padding:10px 22px!important}
 .hamburger{background:none;border:none;cursor:pointer;display:none;flex-direction:column;gap:5px;padding:4px;z-index:1100;position:relative}
 .hamburger span{background:#fff;border-radius:4px;display:block;height:2px;transition:var(--transition);width:26px}
-.hamburger.active span:first-child{transform:translateY(7px) rotate(45deg)}
-.hamburger.active span:nth-child(2){opacity:0}
-.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hamburger.active{display:none}
 .nav-overlay{display:none;position:fixed;inset:0;background:#00000066;z-index:998;opacity:0;transition:opacity .3s ease}
 .nav-overlay.open{opacity:1}
 .nav-mobile-brand{display:none}
+.nav-mobile-brand-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-text-main{color:#fff;font-size:16px;font-weight:700}
+.logo-text-sub{color:#c9a84c;font-size:13px;font-weight:600}
 .nav-mobile-close{display:none}
 @media(max-width:900px){
   .hamburger{display:flex}
   .nav-overlay{display:block}
   .nav-links{align-items:flex-start;background:#0a1628;box-shadow:-8px 0 40px #0009;flex-direction:column;gap:0;height:100vh;overflow-y:auto;padding:0;position:fixed;right:-320px;top:0;transition:right .35s cubic-bezier(.4,0,.2,1);width:300px;z-index:999}
   .nav-links.open{right:0}
-  .nav-mobile-brand{display:flex;align-items:center;gap:10px;padding:20px 24px;border-bottom:1px solid #ffffff1a;width:100%}
-  .nav-mobile-close{display:flex;align-items:center;justify-content:center;background:#ffffff1a;border:none;color:#fff;font-size:20px;cursor:pointer;margin-left:auto;width:36px;height:36px;border-radius:50%;flex-shrink:0}
+  .nav-mobile-brand{display:flex;align-items:center;gap:12px;padding:20px 24px;border-bottom:1px solid #ffffff1a;width:100%}
+  .nav-mobile-close{display:flex;align-items:center;justify-content:center;background:#ffffff1a;border:none;color:#fff;font-size:18px;cursor:pointer;margin-left:auto;width:36px;height:36px;border-radius:50%;flex-shrink:0;transition:background .2s}
+  .nav-mobile-close:hover{background:#ffffff33}
   .nav-links a{font-size:15px;padding:14px 24px;width:100%;border-bottom:1px solid #ffffff0a;color:#ffffffcc}
   .nav-links a:hover,.nav-links a.active{color:#c9a84c;background:#ffffff08}
   .nav-cta{margin:16px 24px;width:calc(100% - 48px);justify-content:center;border-bottom:none!important}
