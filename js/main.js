@@ -172,10 +172,15 @@ goTo(0);
 
 // Footer accordion (mobile only)
 document.querySelectorAll('.footer-col h4').forEach(h4 => {
+  h4.style.cursor = 'pointer';
   h4.addEventListener('click', () => {
-    if (window.innerWidth > 600) return;
-    const col = h4.parentElement;
-    col.classList.toggle('open');
+    if (window.innerWidth > 768) return;
+    const col = h4.closest('.footer-col');
+    const isOpen = col.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.footer-col').forEach(c => c.classList.remove('open'));
+    // Open clicked if was closed
+    if (!isOpen) col.classList.add('open');
   });
 });
 
