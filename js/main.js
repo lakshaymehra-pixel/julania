@@ -125,7 +125,7 @@ document.getElementById('cbCloseFab').addEventListener('click', closeChat);
 // Testimonials slider
 const testiGrid = document.getElementById('testiGrid');
 const tcDots = document.getElementById('tcDots');
-const cards = testiGrid.querySelectorAll('.testi-card');
+const cards = Array.from(testiGrid.querySelectorAll('.testi-card'));
 let current = 0;
 
 function getPerPage() {
@@ -134,10 +134,13 @@ function getPerPage() {
   return 3;
 }
 
+function getTotalPages() {
+  return Math.ceil(cards.length / getPerPage());
+}
+
 function buildDots() {
   tcDots.innerHTML = '';
-  const perPage = getPerPage();
-  const total = Math.ceil(cards.length / perPage);
+  const total = getTotalPages();
   for (let i = 0; i < total; i++) {
     const d = document.createElement('span');
     d.className = 'tc-dot' + (i === current ? ' active' : '');
@@ -147,11 +150,13 @@ function buildDots() {
 }
 
 function goTo(idx) {
-  const perPage = getPerPage();
-  const total = Math.ceil(cards.length / perPage);
+  const total = getTotalPages();
   current = Math.max(0, Math.min(idx, total - 1));
-  const cardWidth = testiGrid.parentElement.offsetWidth;
-  testiGrid.style.transform = `translateX(-${current * cardWidth}px)`;
+  // Use first card's actual width for accurate offset
+  const cardEl = cards[0];
+  const cardWidth = cardEl.offsetWidth + parseInt(getComputedStyle(cardEl).marginLeft) + parseInt(getComputedStyle(cardEl).marginRight);
+  const perPage = getPerPage();
+  testiGrid.style.transform = `translateX(-${current * perPage * cardWidth}px)`;
   tcDots.querySelectorAll('.tc-dot').forEach((d, i) => d.classList.toggle('active', i === current));
 }
 
@@ -159,12 +164,12 @@ document.getElementById('tcPrev').addEventListener('click', () => goTo(current -
 document.getElementById('tcNext').addEventListener('click', () => goTo(current + 1));
 window.addEventListener('resize', () => { current = 0; buildDots(); goTo(0); });
 
-// Touch swipe for testimonials
+// Touch swipe
 let tsX = 0;
-testiGrid.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; });
+testiGrid.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, {passive: true});
 testiGrid.addEventListener('touchend', e => {
   const diff = tsX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+  if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
 });
 
 buildDots();
