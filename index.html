@@ -44,20 +44,27 @@
     .nav-links a{border-radius:8px;color:#ffffffd1;font-size:14px;font-weight:500;padding:8px 14px;transition:var(--transition)}
     .nav-links a:hover,.nav-links a.active{color:#c9a84c}
     .nav-cta{font-size:14px!important;margin-left:8px;padding:10px 22px!important}
-    .hamburger{background:none;border:none;cursor:pointer;display:none;flex-direction:column;gap:5px;padding:4px}
+    .hamburger{background:none;border:none;cursor:pointer;display:none;flex-direction:column;gap:5px;padding:4px;z-index:1100;position:relative}
     .hamburger span{background:#fff;border-radius:4px;display:block;height:2px;transition:var(--transition);width:26px}
     .hamburger.active span:first-child{transform:translateY(7px) rotate(45deg)}
     .hamburger.active span:nth-child(2){opacity:0}
     .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    /* Mobile overlay backdrop */
+    .nav-overlay{display:none;position:fixed;inset:0;background:#00000066;z-index:998;opacity:0;transition:opacity .3s ease}
+    .nav-overlay.open{opacity:1}
+    .nav-mobile-brand{display:none}
+    .nav-mobile-close{display:none}
     @media(max-width:900px){
       .hamburger{display:flex}
-      .nav-links{align-items:flex-start;background:#0a1628;box-shadow:-8px 0 32px #0006;flex-direction:column;gap:4px;height:100vh;padding:80px 32px 40px;position:fixed;right:-100%;top:0;transition:right .35s ease;width:280px;z-index:999}
+      .nav-overlay{display:block}
+      .nav-links{align-items:flex-start;background:#0a1628;box-shadow:-8px 0 40px #0009;flex-direction:column;gap:0;height:100vh;overflow-y:auto;padding:0;position:fixed;right:-320px;top:0;transition:right .35s cubic-bezier(.4,0,.2,1);width:300px;z-index:999}
       .nav-links.open{right:0}
-      .nav-links a{font-size:16px;padding:12px 16px;width:100%}
-      .nav-cta{justify-content:center;margin-left:0;margin-top:16px;width:100%}
-      .nav-mobile-brand{display:flex;align-items:center;gap:10px;padding:0 16px 20px;border-bottom:1px solid #ffffff1a;width:100%;margin-bottom:8px;position:absolute;top:24px;left:32px}
+      .nav-mobile-brand{display:flex;align-items:center;gap:10px;padding:20px 24px;border-bottom:1px solid #ffffff1a;width:100%}
+      .nav-mobile-close{display:flex;align-items:center;justify-content:center;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;margin-left:auto;width:36px;height:36px;border-radius:50%;background:#ffffff1a;flex-shrink:0}
+      .nav-links a{font-size:15px;padding:14px 24px;width:100%;border-bottom:1px solid #ffffff0a;color:#ffffffcc}
+      .nav-links a:hover,.nav-links a.active{color:#c9a84c;background:#ffffff08}
+      .nav-cta{margin:16px 24px;width:calc(100% - 48px);justify-content:center;border-bottom:none!important}
     }
-    .nav-mobile-brand{display:none}
     /* HERO */
     .hero{align-items:center;background:var(--gradient);display:flex;min-height:100vh;overflow:hidden;padding-top:80px;position:relative}
     .hero-bg-pattern{background-image:radial-gradient(circle at 20% 50%,#1e4fa059 0,transparent 50%),radial-gradient(circle at 80% 20%,#c9a84c1f 0,transparent 40%);inset:0;pointer-events:none;position:absolute}
@@ -347,10 +354,35 @@
     .scroll-top-btn{align-items:center;background:var(--gradient-gold);border:none;border-radius:50%;bottom:32px;box-shadow:var(--shadow-lg);color:#0a1628;cursor:pointer;display:flex;font-size:18px;height:48px;justify-content:center;position:fixed;right:32px;transition:var(--transition);width:48px;z-index:999}
     .scroll-top-btn:hover{transform:translateY(-4px)}
     @keyframes fadeInUp{0%{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    /* General mobile optimizations */
+    @media(max-width:600px){
+      section{padding:60px 0}
+      .container{padding:0 16px}
+      .section-title{font-size:24px}
+      .section-subtitle{font-size:14px}
+      .contact-wrapper{grid-template-columns:1fr}
+      .contact-info{padding:28px 20px}
+      .contact-form{padding:24px 20px}
+      .form-row{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-top{padding:40px 0 24px}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .why-grid{grid-template-columns:1fr}
+      .process-track{grid-template-columns:1fr 1fr}
+      .services-grid{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr}
+      .hero-container{grid-template-columns:1fr;text-align:center}
+      .hero-visual{display:none}
+      .hero-features,.hero-actions{justify-content:center}
+      .av-ill-stats{flex-direction:column;gap:12px;align-items:center}
+      .av-ill-stat-div{width:60px;height:1px}
+      .about-highlights{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
 
+<div class="nav-overlay" id="navOverlay"></div>
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="container">
@@ -359,11 +391,12 @@
         <div class="logo-icon">JF</div>
         <span class="logo-text">Julania <span>Finance</span></span>
       </a>
-      <div class="nav-mobile-brand" id="navMobileBrand">
-        <div class="logo-icon">JF</div>
-        <span class="logo-text">Julania <span>Finance</span></span>
-      </div>
       <div class="nav-links" id="navLinks">
+        <div class="nav-mobile-brand">
+          <div class="logo-icon">JF</div>
+          <span class="logo-text">Julania <span>Finance</span></span>
+          <button class="nav-mobile-close" id="navCloseBtn"><i class="fa fa-xmark"></i></button>
+        </div>
         <a href="#home" class="active">Home</a>
         <a href="#services">Services</a>
         <a href="#about">About</a>
@@ -1050,17 +1083,25 @@
   // Hamburger
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
-  const navMobileBrand = document.getElementById('navMobileBrand');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('open');
-    navMobileBrand.style.display = navLinks.classList.contains('open') ? 'flex' : 'none';
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  const navOverlay = document.getElementById('navOverlay');
+
+  function openNav() {
+    hamburger.classList.add('active');
+    navLinks.classList.add('open');
+    navOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
     hamburger.classList.remove('active');
     navLinks.classList.remove('open');
-    navMobileBrand.style.display = 'none';
-  }));
+    navOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => navLinks.classList.contains('open') ? closeNav() : openNav());
+  navOverlay.addEventListener('click', closeNav);
+  document.getElementById('navCloseBtn').addEventListener('click', closeNav);
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
   // Hero visible
   setTimeout(() => document.getElementById('heroContainer').classList.add('visible'), 100);
