@@ -69,8 +69,8 @@ section{padding:90px 0}
 
 /* HERO */
 .hero{align-items:center;background:var(--gradient);display:flex;min-height:100vh;overflow:hidden;padding-top:80px;position:relative}
-.hero-bg-pattern{background-image:radial-gradient(circle at 20% 50%,#1e4fa059 0,transparent 50%),radial-gradient(circle at 80% 20%,#c9a84c1f 0,transparent 40%);inset:0;pointer-events:none;position:absolute}
-.hero-container{align-items:center;display:grid;gap:60px;grid-template-columns:1fr 1fr;padding:40px 0 80px;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.hero-bg-pattern{background-image:radial-gradient(circle at 20% 50%,#1e4fa059 0,transparent 50%),radial-gradient(circle at 80% 20%,#c9a84c1f 0,transparent 40%);inset:0;pointer-events:none;position:absolute;z-index:0}
+.hero-container{align-items:center;display:grid;gap:60px;grid-template-columns:1fr 1fr;padding:40px 0 80px;opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease;position:relative;z-index:1}
 .hero-container.visible{opacity:1;transform:translateY(0)}
 .hero-badge{align-items:center;background:#c9a84c26;border:1px solid #c9a84c66;border-radius:50px;color:#f0c84a;display:inline-flex;font-size:12px;font-weight:600;gap:8px;margin-bottom:24px;padding:7px 16px}
 .hero-title{color:#fff;font-size:clamp(26px,3.5vw,50px);font-weight:700;line-height:1.15;margin-bottom:20px}
@@ -1290,6 +1290,7 @@ document.querySelectorAll('.stat-card,.why-card,.testi-card,.process-step').forE
 </script>
 </body>
 </html>
+
 
 
 
